@@ -1,0 +1,9 @@
+target "SuperReminder" do
+platform :ios, '8.0'
+pod 'CRToast'
+pod 'ionicons'
+pod 'ChameleonFramework'
+pod 'Realm'
+pod 'DZNEmptyDataSet'
+pod 'KVNProgress'
+end
