@@ -1,0 +1,683 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC1E3FC61E4D9BEB006FB0AE /* NOTES in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3FC51E4D9BEB006FB0AE /* NOTES */; };
+		AC1E3FC91E4D9EF6006FB0AE /* bignoodletoo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3FC71E4D9EF6006FB0AE /* bignoodletoo.ttf */; };
+		AC1E3FCA1E4D9EF6006FB0AE /* koverwatch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3FC81E4D9EF6006FB0AE /* koverwatch.ttf */; };
+		AC2852E61E4C388000B228C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2852E51E4C388000B228C8 /* main.m */; };
+		AC2852E91E4C388000B228C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2852E81E4C388000B228C8 /* AppDelegate.m */; };
+		AC2852EF1E4C388000B228C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2852ED1E4C388000B228C8 /* Main.storyboard */; };
+		AC2852F11E4C388000B228C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2852F01E4C388000B228C8 /* Assets.xcassets */; };
+		AC2852F41E4C388000B228C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2852F21E4C388000B228C8 /* LaunchScreen.storyboard */; };
+		AC2852FF1E4C388000B228C8 /* SuperReminderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2852FE1E4C388000B228C8 /* SuperReminderTests.m */; };
+		AC28530A1E4C388000B228C8 /* SuperReminderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2853091E4C388000B228C8 /* SuperReminderUITests.m */; };
+		AC28531A1E4C394500B228C8 /* ReminderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2853191E4C394500B228C8 /* ReminderObject.m */; };
+		AC28531E1E4C3D0000B228C8 /* NewEntryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28531D1E4C3D0000B228C8 /* NewEntryTableViewController.m */; };
+		AC2853221E4C547C00B228C8 /* RealmDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2853211E4C547C00B228C8 /* RealmDataTableViewController.m */; };
+		AC3503851E521046006DC6AF /* RealmDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */; };
+		FC77A4822A9B8DDE4BE7E73D /* libPods-SuperReminder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D859C41E72CA231B622A06B /* libPods-SuperReminder.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC2852FB1E4C388000B228C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC2852D91E4C388000B228C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC2852E01E4C388000B228C8;
+			remoteInfo = SuperReminder;
+		};
+		AC2853061E4C388000B228C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC2852D91E4C388000B228C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC2852E01E4C388000B228C8;
+			remoteInfo = SuperReminder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		081FF1DABB7E5AB69D95B1E5 /* Pods-SuperReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder.debug.xcconfig"; sourceTree = "<group>"; };
+		5E98C12311225A3CE1E2F4AE /* Pods-SuperReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder.release.xcconfig"; sourceTree = "<group>"; };
+		6D859C41E72CA231B622A06B /* libPods-SuperReminder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperReminder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1E3FC51E4D9BEB006FB0AE /* NOTES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
+		AC1E3FC71E4D9EF6006FB0AE /* bignoodletoo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bignoodletoo.ttf; sourceTree = "<group>"; };
+		AC1E3FC81E4D9EF6006FB0AE /* koverwatch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = koverwatch.ttf; sourceTree = "<group>"; };
+		AC2852E11E4C388000B228C8 /* SuperReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2852E51E4C388000B228C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC2852E71E4C388000B228C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AC2852E81E4C388000B228C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AC2852EE1E4C388000B228C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC2852F01E4C388000B228C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC2852F31E4C388000B228C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC2852F51E4C388000B228C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC2852FA1E4C388000B228C8 /* SuperReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2852FE1E4C388000B228C8 /* SuperReminderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperReminderTests.m; sourceTree = "<group>"; };
+		AC2853001E4C388000B228C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC2853051E4C388000B228C8 /* SuperReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperReminderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2853091E4C388000B228C8 /* SuperReminderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperReminderUITests.m; sourceTree = "<group>"; };
+		AC28530B1E4C388000B228C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC2853181E4C394500B228C8 /* ReminderObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderObject.h; sourceTree = "<group>"; };
+		AC2853191E4C394500B228C8 /* ReminderObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderObject.m; sourceTree = "<group>"; };
+		AC28531C1E4C3D0000B228C8 /* NewEntryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEntryTableViewController.h; sourceTree = "<group>"; };
+		AC28531D1E4C3D0000B228C8 /* NewEntryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEntryTableViewController.m; sourceTree = "<group>"; };
+		AC2853201E4C547C00B228C8 /* RealmDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealmDataTableViewController.h; sourceTree = "<group>"; };
+		AC2853211E4C547C00B228C8 /* RealmDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmDataTableViewController.m; sourceTree = "<group>"; };
+		AC3503831E521046006DC6AF /* RealmDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealmDataTableViewCell.h; sourceTree = "<group>"; };
+		AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmDataTableViewCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC2852DE1E4C388000B228C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC77A4822A9B8DDE4BE7E73D /* libPods-SuperReminder.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2852F71E4C388000B228C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2853021E4C388000B228C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EDF373BCFBFEFAA5CB2866C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				081FF1DABB7E5AB69D95B1E5 /* Pods-SuperReminder.debug.xcconfig */,
+				5E98C12311225A3CE1E2F4AE /* Pods-SuperReminder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC2852D81E4C388000B228C8 = {
+			isa = PBXGroup;
+			children = (
+				AC2853171E4C391F00B228C8 /* Realm Setup */,
+				AC28531B1E4C3CD000B228C8 /* New Entry TableView */,
+				AC28531F1E4C545B00B228C8 /* Realm Data TableView */,
+				AC3503821E521014006DC6AF /* Realm Data TableView Cell */,
+				AC2852ED1E4C388000B228C8 /* Main.storyboard */,
+				AC2852E31E4C388000B228C8 /* SuperReminder */,
+				AC2852FD1E4C388000B228C8 /* SuperReminderTests */,
+				AC2853081E4C388000B228C8 /* SuperReminderUITests */,
+				AC2852E21E4C388000B228C8 /* Products */,
+				3EDF373BCFBFEFAA5CB2866C /* Pods */,
+				B8602D7AB1FEE070255381F0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AC2852E21E4C388000B228C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC2852E11E4C388000B228C8 /* SuperReminder.app */,
+				AC2852FA1E4C388000B228C8 /* SuperReminderTests.xctest */,
+				AC2853051E4C388000B228C8 /* SuperReminderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC2852E31E4C388000B228C8 /* SuperReminder */ = {
+			isa = PBXGroup;
+			children = (
+				AC2852E71E4C388000B228C8 /* AppDelegate.h */,
+				AC2852E81E4C388000B228C8 /* AppDelegate.m */,
+				AC2852F01E4C388000B228C8 /* Assets.xcassets */,
+				AC2852F21E4C388000B228C8 /* LaunchScreen.storyboard */,
+				AC2852F51E4C388000B228C8 /* Info.plist */,
+				AC2852E41E4C388000B228C8 /* Supporting Files */,
+				AC1E3FC51E4D9BEB006FB0AE /* NOTES */,
+			);
+			path = SuperReminder;
+			sourceTree = "<group>";
+		};
+		AC2852E41E4C388000B228C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC1E3FC71E4D9EF6006FB0AE /* bignoodletoo.ttf */,
+				AC1E3FC81E4D9EF6006FB0AE /* koverwatch.ttf */,
+				AC2852E51E4C388000B228C8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AC2852FD1E4C388000B228C8 /* SuperReminderTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC2852FE1E4C388000B228C8 /* SuperReminderTests.m */,
+				AC2853001E4C388000B228C8 /* Info.plist */,
+			);
+			path = SuperReminderTests;
+			sourceTree = "<group>";
+		};
+		AC2853081E4C388000B228C8 /* SuperReminderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC2853091E4C388000B228C8 /* SuperReminderUITests.m */,
+				AC28530B1E4C388000B228C8 /* Info.plist */,
+			);
+			path = SuperReminderUITests;
+			sourceTree = "<group>";
+		};
+		AC2853171E4C391F00B228C8 /* Realm Setup */ = {
+			isa = PBXGroup;
+			children = (
+				AC2853181E4C394500B228C8 /* ReminderObject.h */,
+				AC2853191E4C394500B228C8 /* ReminderObject.m */,
+			);
+			name = "Realm Setup";
+			sourceTree = "<group>";
+		};
+		AC28531B1E4C3CD000B228C8 /* New Entry TableView */ = {
+			isa = PBXGroup;
+			children = (
+				AC28531C1E4C3D0000B228C8 /* NewEntryTableViewController.h */,
+				AC28531D1E4C3D0000B228C8 /* NewEntryTableViewController.m */,
+			);
+			name = "New Entry TableView";
+			sourceTree = "<group>";
+		};
+		AC28531F1E4C545B00B228C8 /* Realm Data TableView */ = {
+			isa = PBXGroup;
+			children = (
+				AC2853201E4C547C00B228C8 /* RealmDataTableViewController.h */,
+				AC2853211E4C547C00B228C8 /* RealmDataTableViewController.m */,
+			);
+			name = "Realm Data TableView";
+			sourceTree = "<group>";
+		};
+		AC3503821E521014006DC6AF /* Realm Data TableView Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AC3503831E521046006DC6AF /* RealmDataTableViewCell.h */,
+				AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */,
+			);
+			name = "Realm Data TableView Cell";
+			sourceTree = "<group>";
+		};
+		B8602D7AB1FEE070255381F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D859C41E72CA231B622A06B /* libPods-SuperReminder.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC2852E01E4C388000B228C8 /* SuperReminder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC28530E1E4C388000B228C8 /* Build configuration list for PBXNativeTarget "SuperReminder" */;
+			buildPhases = (
+				619EC4FAA02194F9984160DB /* [CP] Check Pods Manifest.lock */,
+				AC2852DD1E4C388000B228C8 /* Sources */,
+				AC2852DE1E4C388000B228C8 /* Frameworks */,
+				AC2852DF1E4C388000B228C8 /* Resources */,
+				C6EC0416F6BE55DAE9C84D85 /* [CP] Embed Pods Frameworks */,
+				45E1068FB420033F88BE7FED /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperReminder;
+			productName = SuperReminder;
+			productReference = AC2852E11E4C388000B228C8 /* SuperReminder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC2852F91E4C388000B228C8 /* SuperReminderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC2853111E4C388000B228C8 /* Build configuration list for PBXNativeTarget "SuperReminderTests" */;
+			buildPhases = (
+				AC2852F61E4C388000B228C8 /* Sources */,
+				AC2852F71E4C388000B228C8 /* Frameworks */,
+				AC2852F81E4C388000B228C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC2852FC1E4C388000B228C8 /* PBXTargetDependency */,
+			);
+			name = SuperReminderTests;
+			productName = SuperReminderTests;
+			productReference = AC2852FA1E4C388000B228C8 /* SuperReminderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC2853041E4C388000B228C8 /* SuperReminderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC2853141E4C388000B228C8 /* Build configuration list for PBXNativeTarget "SuperReminderUITests" */;
+			buildPhases = (
+				AC2853011E4C388000B228C8 /* Sources */,
+				AC2853021E4C388000B228C8 /* Frameworks */,
+				AC2853031E4C388000B228C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC2853071E4C388000B228C8 /* PBXTargetDependency */,
+			);
+			name = SuperReminderUITests;
+			productName = SuperReminderUITests;
+			productReference = AC2853051E4C388000B228C8 /* SuperReminderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC2852D91E4C388000B228C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "James Martin";
+				TargetAttributes = {
+					AC2852E01E4C388000B228C8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9XZ4F4T9QB;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					AC2852F91E4C388000B228C8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9XZ4F4T9QB;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AC2852E01E4C388000B228C8;
+					};
+					AC2853041E4C388000B228C8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9XZ4F4T9QB;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AC2852E01E4C388000B228C8;
+					};
+				};
+			};
+			buildConfigurationList = AC2852DC1E4C388000B228C8 /* Build configuration list for PBXProject "SuperReminder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC2852D81E4C388000B228C8;
+			productRefGroup = AC2852E21E4C388000B228C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC2852E01E4C388000B228C8 /* SuperReminder */,
+				AC2852F91E4C388000B228C8 /* SuperReminderTests */,
+				AC2853041E4C388000B228C8 /* SuperReminderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC2852DF1E4C388000B228C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC2852F41E4C388000B228C8 /* LaunchScreen.storyboard in Resources */,
+				AC2852F11E4C388000B228C8 /* Assets.xcassets in Resources */,
+				AC1E3FC91E4D9EF6006FB0AE /* bignoodletoo.ttf in Resources */,
+				AC1E3FC61E4D9BEB006FB0AE /* NOTES in Resources */,
+				AC1E3FCA1E4D9EF6006FB0AE /* koverwatch.ttf in Resources */,
+				AC2852EF1E4C388000B228C8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2852F81E4C388000B228C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2853031E4C388000B228C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45E1068FB420033F88BE7FED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		619EC4FAA02194F9984160DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C6EC0416F6BE55DAE9C84D85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC2852DD1E4C388000B228C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC28531A1E4C394500B228C8 /* ReminderObject.m in Sources */,
+				AC3503851E521046006DC6AF /* RealmDataTableViewCell.m in Sources */,
+				AC2852E91E4C388000B228C8 /* AppDelegate.m in Sources */,
+				AC2853221E4C547C00B228C8 /* RealmDataTableViewController.m in Sources */,
+				AC2852E61E4C388000B228C8 /* main.m in Sources */,
+				AC28531E1E4C3D0000B228C8 /* NewEntryTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2852F61E4C388000B228C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC2852FF1E4C388000B228C8 /* SuperReminderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2853011E4C388000B228C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC28530A1E4C388000B228C8 /* SuperReminderUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC2852FC1E4C388000B228C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC2852E01E4C388000B228C8 /* SuperReminder */;
+			targetProxy = AC2852FB1E4C388000B228C8 /* PBXContainerItemProxy */;
+		};
+		AC2853071E4C388000B228C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC2852E01E4C388000B228C8 /* SuperReminder */;
+			targetProxy = AC2853061E4C388000B228C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC2852ED1E4C388000B228C8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC2852EE1E4C388000B228C8 /* Base */,
+			);
+			name = Main.storyboard;
+			path = SuperReminder;
+			sourceTree = "<group>";
+		};
+		AC2852F21E4C388000B228C8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC2852F31E4C388000B228C8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC28530C1E4C388000B228C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AC28530D1E4C388000B228C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC28530F1E4C388000B228C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 081FF1DABB7E5AB69D95B1E5 /* Pods-SuperReminder.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				INFOPLIST_FILE = SuperReminder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AC2853101E4C388000B228C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E98C12311225A3CE1E2F4AE /* Pods-SuperReminder.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				INFOPLIST_FILE = SuperReminder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AC2853121E4C388000B228C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				INFOPLIST_FILE = SuperReminderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuperReminder.app/SuperReminder";
+			};
+			name = Debug;
+		};
+		AC2853131E4C388000B228C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				INFOPLIST_FILE = SuperReminderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuperReminder.app/SuperReminder";
+			};
+			name = Release;
+		};
+		AC2853151E4C388000B228C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				INFOPLIST_FILE = SuperReminderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SuperReminder;
+			};
+			name = Debug;
+		};
+		AC2853161E4C388000B228C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				INFOPLIST_FILE = SuperReminderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SuperReminder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC2852DC1E4C388000B228C8 /* Build configuration list for PBXProject "SuperReminder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC28530C1E4C388000B228C8 /* Debug */,
+				AC28530D1E4C388000B228C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC28530E1E4C388000B228C8 /* Build configuration list for PBXNativeTarget "SuperReminder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC28530F1E4C388000B228C8 /* Debug */,
+				AC2853101E4C388000B228C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC2853111E4C388000B228C8 /* Build configuration list for PBXNativeTarget "SuperReminderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC2853121E4C388000B228C8 /* Debug */,
+				AC2853131E4C388000B228C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC2853141E4C388000B228C8 /* Build configuration list for PBXNativeTarget "SuperReminderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC2853151E4C388000B228C8 /* Debug */,
+				AC2853161E4C388000B228C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC2852D91E4C388000B228C8 /* Project object */;
+}

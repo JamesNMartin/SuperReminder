@@ -48,7 +48,11 @@
     _contactLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
     _dueLabel.textColor =     [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
     //################################################################################################################
-    [_nameTextField becomeFirstResponder];
+    
+    
+    dispatch_main_after(0.5f, ^{
+         [_nameTextField becomeFirstResponder];
+        });
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -116,7 +120,7 @@
 -(NSDictionary*)successToast {
     
     NSMutableDictionary *options = [@{
-                                      kCRToastTextKey: @"Reminder Added",
+                                      kCRToastTextKey: @"Bill Reminder Added",
                                       kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
                                       kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:[UIColor whiteColor]],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
@@ -167,8 +171,11 @@
                                     }];
         
     } else {
+        
+        NSString *priceStringToDouble = self.priceTextField.text;
+        
         reminder.name = self.nameTextField.text;
-        reminder.price = self.priceTextField.text;
+        reminder.price = [priceStringToDouble doubleValue];
         reminder.dueDate = dueDate;
         reminder.monthlyCheck = monthlyBOOL;
         reminder.autoPay = autoPayBOOL;
@@ -176,18 +183,15 @@
         
         
         
-//        NSLog(@"NAME: %@", self.nameTextField.text);
-//        NSLog(@"PRICE: %@", self.priceTextField.text);
-//        NSLog(@"DUE DATE: %@", dueString);
-//        NSLog(@"MONTHLY CHECK: %hhu", monthlyBOOL);
-//        NSLog(@"AUTO PAY CHECK: %hhu", autoPayBOOL);
-//        NSLog(@"PHONE NUMBER: %@", self.contactNumberTextField.text);
-//        printf("\n");
+        NSLog(@"NAME: %@", self.nameTextField.text);
+        NSLog(@"PRICE: %@", self.priceTextField.text);
+        NSLog(@"DUE DATE: %@", dueString);
+        NSLog(@"MONTHLY CHECK: %hhu", monthlyBOOL);
+        NSLog(@"AUTO PAY CHECK: %hhu", autoPayBOOL);
+        NSLog(@"PHONE NUMBER: %@", self.contactNumberTextField.text);
+        printf("\n");
         
         [self addToRealm:reminder];
-        
-        
-        
         
         
         
@@ -197,17 +201,13 @@
                                      }
                                     completionBlock:^(void) {
                                     }];
-//        [KVNProgress showSuccessWithStatus:@"Reminder Added"];
-//        
-//        dispatch_main_after(1.0f, ^{
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//            [KVNProgress dismiss];
-//            
-//        });
-        
     }
 }
 - (IBAction)closeButton:(id)sender {
+    [self.view endEditing:YES];
+    dispatch_main_after(0.25f, ^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    });
 //
 //  THIS IS A MAYBE
 //
@@ -224,8 +224,6 @@
 //               withCustomImage:nil
 //           withDoneButtonTitle:@"Continue"
 //                    andButtons:@[@"Cancel"]];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)monthlyTapped:(id)sender {
     if (monthlyBOOL == false) {
@@ -269,57 +267,4 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
         block();
     });
 }
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 @end
