@@ -14,6 +14,7 @@
 #import <KVNProgress/KVNProgress.h>
 #import <Chameleon.h>
 
+
 @interface NewEntryTableViewController ()
 
 @end
@@ -23,14 +24,22 @@
     Boolean monthlyBOOL;
     Boolean autoPayBOOL;
 }
-
 - (void)viewDidLoad {
-    [super viewDidLoad];
     
-    self.navigationController.navigationBar.tintColor = FlatBlue;
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     [super viewDidLoad];
+}
+-(void)viewWillAppear:(BOOL)animated {
+    
+    self.navigationController.navigationBar.tintColor = FlatWhite;
     
     monthlyBOOL = false;
     
+    self.navigationController.navigationBar.barTintColor = FlatMaroonDark;
     //self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.74 green:0.75 blue:0.74 alpha:1.00];
     self.navigationController.navigationBar.translucent = NO;
     //self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
@@ -47,19 +56,14 @@
     _monthlyLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
     _contactLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
     _dueLabel.textColor =     [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
+    
+    _taxSegemntControl.tintColor = FlatMaroonDark;
     //################################################################################################################
     
-    
     dispatch_main_after(0.5f, ^{
-         [_nameTextField becomeFirstResponder];
-        });
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        [_nameTextField becomeFirstResponder];
+    });
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -74,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 5;
+    return 6;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -161,9 +165,6 @@
     
     if ([self.nameTextField.text isEqual:@""]) {
         
-        //NSLog(@"NAME: %@", self.nameTextField.text);
-        //NSLog(@"PRICE: %@", self.priceTextField.text);
-        
         [CRToastManager showNotificationWithOptions:[self errorToast]
                                      apperanceBlock:^(void) {
                                      }
@@ -175,11 +176,23 @@
         NSString *priceStringToDouble = self.priceTextField.text;
         
         reminder.name = self.nameTextField.text;
-        reminder.price = [priceStringToDouble doubleValue];
+        //reminder.price = [priceStringToDouble doubleValue];
         reminder.dueDate = dueDate;
         reminder.monthlyCheck = monthlyBOOL;
         reminder.autoPay = autoPayBOOL;
         
+        if (_taxSegemntControl.selectedSegmentIndex == 0) {
+            double taxRate = 0.09;
+            double priceWithTax = [priceStringToDouble doubleValue] * taxRate + [priceStringToDouble doubleValue];
+            
+            reminder.price = priceWithTax;
+        }
+        if (_taxSegemntControl.selectedSegmentIndex == 1) {
+            reminder.price = [priceStringToDouble doubleValue];
+        }
+        if (_taxSegemntControl.selectedSegmentIndex == 2) {
+            printf("NOTHING HANDLED HERE YET");
+        }
         
         
         
@@ -188,7 +201,6 @@
         NSLog(@"DUE DATE: %@", dueString);
         NSLog(@"MONTHLY CHECK: %hhu", monthlyBOOL);
         NSLog(@"AUTO PAY CHECK: %hhu", autoPayBOOL);
-        NSLog(@"PHONE NUMBER: %@", self.contactNumberTextField.text);
         printf("\n");
         
         [self addToRealm:reminder];
@@ -197,7 +209,7 @@
         
         [CRToastManager showNotificationWithOptions:[self successToast]
                                      apperanceBlock:^(void) {
-                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                         [self dismissViewControllerAnimated:YES completion:nil];
                                      }
                                     completionBlock:^(void) {
                                     }];

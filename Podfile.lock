@@ -6,9 +6,9 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - ionicons (2.0.3)
   - KVNProgress (2.3.1)
-  - Realm (2.4.2):
-    - Realm/Headers (= 2.4.2)
-  - Realm/Headers (2.4.2)
+  - Realm (2.4.3):
+    - Realm/Headers (= 2.4.3)
+  - Realm/Headers (2.4.3)
 
 DEPENDENCIES:
   - ChameleonFramework
@@ -24,8 +24,8 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
-  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
+  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
 
-PODFILE CHECKSUM: 09825e22a95fe1da4b256c2c7281bc3e724a7f23
+PODFILE CHECKSUM: '09825e22a95fe1da4b256c2c7281bc3e724a7f23'
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

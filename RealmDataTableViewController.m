@@ -17,14 +17,13 @@
 #import "RealmDataTableViewCell.h"
 #import "NewEntryTableViewController.h"
 
-
-
-
 @interface RealmDataTableViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
     
     RLMResults *data;
     
 }
+
+
 
 @end
 
@@ -34,15 +33,15 @@
     [super viewDidLoad];
     
     
-    [self.addButton setTitle:nil];
-    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatBlue]];
-    
-    [self.clearButton setTitle:nil];
-    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_trash_outline size:32.0f color:FlatBlue]];
-    
-    self.navigationController.navigationBar.translucent = NO;
-    
-    [self.totalMonthlyBill setTextColor:FlatBlue];
+//    [self.addButton setTitle:nil];
+//    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatBlue]];
+//    
+//    [self.clearButton setTitle:nil];
+//    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_trash_outline size:32.0f color:FlatBlue]];
+//    
+//    self.navigationController.navigationBar.translucent = NO;
+//    
+//    [self.totalMonthlyBill setTextColor:FlatBlue];
     
     //self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -57,10 +56,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIImage imageNamed:@"empty_placeholder"];
 }
 - (IBAction)clearButton:(id)sender {
     RLMRealm *realm = [RLMRealm defaultRealm];
@@ -118,14 +113,35 @@
     });
 }
 -(void)viewWillAppear:(BOOL)animated {
+    
+    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark;
+    self.navigationController.navigationBar.tintColor = FlatWhite;
+    
+    [self.addButton setTitle:nil];
+//    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatBlue]];
+    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatWhite]];
+    
+    
+    [self.clearButton setTitle:nil];
+    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:FlatWhite]];
+    
+    self.navigationController.navigationBar.translucent = NO;
+    
+    [self.totalMonthlyBill setTextColor:FlatNavyBlue];
+
+    
+    
     [self.tableView reloadData];
     data = [ReminderObject allObjects];
+    
     NSNumber *sum = [data sumOfProperty:@"price"];
     NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
     [decimalStyleFormatter setMaximumFractionDigits:2];
     NSString *sumString = [decimalStyleFormatter stringFromNumber:sum];
     NSString *totalString = [[NSString alloc] initWithFormat: @"Total Monthly Bill Cost $%@", sumString];
     _totalMonthlyBill.text = totalString;
+    
+    
     NSLog(@"OBJECTS IN LIST: %lu", (unsigned long)[data count]);
 }
 - (void)didReceiveMemoryWarning {
@@ -157,8 +173,18 @@
     NSString *dueString = [dateFormatter stringFromDate:dueDate];
     
     [cell.nameLabel setText:[NSString stringWithFormat:@"%@",data[indexPath.row][@"name"]]];
-    [cell.priceLabel setText:[NSString stringWithFormat:@"%@",data[indexPath.row][@"price"]]];
+    [cell.priceLabel setText:[NSString stringWithFormat:@"$%@",data[indexPath.row][@"price"]]];
     [cell.statusLabel setText:dueString];
+    
+    
+    cell.nameLabel.textColor   = FlatNavyBlueDark;
+    cell.priceLabel.textColor  = FlatGrayDark;
+    cell.autoPayCheck.textColor = FlatGrayDark;
+//    cell.nameLabel.textColor   = FlatWhite;
+//    cell.priceLabel.textColor  = FlatWhiteDark;
+//    cell.autoPayCheck.textColor = FlatWhiteDark;
+    
+    cell.backgroundColor = FlatWhite;
     
     NSNumber *boolNumber = data[indexPath.row][@"autoPay"];
     BOOL autoPay = boolNumber.boolValue;

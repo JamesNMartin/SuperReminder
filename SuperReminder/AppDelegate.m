@@ -18,7 +18,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00]}];
+
+    
+    //    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00]}];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : FlatWhite}];
+    
+//    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
+//                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+//                              if (!error) {
+//                                  NSLog(@"request authorization succeeded!");
+//                              }
+//                          }];
+    
     
 //    UITextField *lagFreeField = [[UITextField alloc] init];
 //    [self.window addSubview:lagFreeField];

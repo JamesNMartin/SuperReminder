@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface RealmDataTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *clearButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
 - (IBAction)clearButton:(id)sender;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton;
-@property (strong, nonatomic) IBOutlet UILabel *totalMonthlyBill;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UILabel *totalMonthlyBill;
 
 
 @end
