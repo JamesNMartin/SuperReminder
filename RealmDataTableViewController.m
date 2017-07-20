@@ -16,14 +16,14 @@
 #import <KVNProgress/KVNProgress.h>
 #import "RealmDataTableViewCell.h"
 #import "NewEntryTableViewController.h"
+#import <DGActivityIndicatorView.h>
 
 @interface RealmDataTableViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
     
     RLMResults *data;
-    
+    RealmDataTableViewCell *cell;
+    RLMRealm *realm;
 }
-
-
 
 @end
 
@@ -31,34 +31,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-//    [self.addButton setTitle:nil];
-//    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatBlue]];
-//    
-//    [self.clearButton setTitle:nil];
-//    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_trash_outline size:32.0f color:FlatBlue]];
-//    
-//    self.navigationController.navigationBar.translucent = NO;
-//    
-//    [self.totalMonthlyBill setTextColor:FlatBlue];
-    
-    //self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    //self.tableView.emptyDataSetSource = self;
-    //self.tableView.emptyDataSetDelegate = self;
-    
-    // A little trick for removing the cell separators
-    //self.tableView.tableFooterView = [UIView new];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 - (IBAction)clearButton:(id)sender {
-    RLMRealm *realm = [RLMRealm defaultRealm];
+    realm = [RLMRealm defaultRealm];
     [CRToastManager showNotificationWithOptions:[self successToast]
                                  apperanceBlock:^(void) {
                                      [realm beginWriteTransaction];
@@ -80,7 +55,7 @@
                                       kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:FlatWhite],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : FlatBlue,
+                                      kCRToastBackgroundColorKey : FlatNavyBlue,
                                       kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
                                       kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
                                       kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
@@ -102,37 +77,28 @@
     }
     return [NSDictionary dictionaryWithDictionary:options];
 }
--(void)success {
-    [KVNProgress showSuccessWithStatus:@"Done!"];
-    
-    dispatch_main_after(1.0f, ^{
-        [self.tableView reloadData];
-        [KVNProgress dismiss];
-        NSLog(@"DATABASE CLEARED");
-        
-    });
-}
 -(void)viewWillAppear:(BOOL)animated {
+    
+    data=[ReminderObject allObjects];
+    [[UINavigationBar appearance] setBackgroundImage: [UIImage new]
+                                       forBarMetrics: UIBarMetricsDefault];
+    
+    [UINavigationBar appearance].shadowImage = [UIImage new];
     
     self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark;
     self.navigationController.navigationBar.tintColor = FlatWhite;
     
     [self.addButton setTitle:nil];
-//    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatBlue]];
     [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatWhite]];
-    
     
     [self.clearButton setTitle:nil];
     [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:FlatWhite]];
     
     self.navigationController.navigationBar.translucent = NO;
     
-    [self.totalMonthlyBill setTextColor:FlatNavyBlue];
+    [self.totalMonthlyBill setTextColor:FlatNavyBlueDark];
 
-    
-    
     [self.tableView reloadData];
-    data = [ReminderObject allObjects];
     
     NSNumber *sum = [data sumOfProperty:@"price"];
     NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
@@ -141,8 +107,8 @@
     NSString *totalString = [[NSString alloc] initWithFormat: @"Total Monthly Bill Cost $%@", sumString];
     _totalMonthlyBill.text = totalString;
     
-    
-    NSLog(@"OBJECTS IN LIST: %lu", (unsigned long)[data count]);
+    self.view.backgroundColor = [UIColor whiteColor];
+    //NSLog(@"OBJECTS IN LIST: %lu", (unsigned long)[data count]);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -160,41 +126,272 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    RealmDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+   cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if ( cell == nil ) {
         cell = [[RealmDataTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
+    
+    /*cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:36.0f color:FlatWhite] backgroundColor:FlatGreen],
+                         [MGSwipeButton buttonWithTitle:@"" icon:[IonIcons imageWithIcon:ion_ios_close_empty size:30.0f color:FlatWhite] backgroundColor:FlatRed]];
+    cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;*/
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    NSDate *dueDate = data[indexPath.row][@"dueDate"];
+    NSDate *dueDate = data[(NSUInteger) indexPath.row][@"dueDate"];
     NSString *dueString = [dateFormatter stringFromDate:dueDate];
+    NSDate *endDate = [[NSDate alloc]init];
+    NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+    NSDateFormatter *todaysDateFormatter = [[NSDateFormatter alloc]init];
+    [todaysDateFormatter setTimeZone:timeZone];
+    [todaysDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *localDateString = [todaysDateFormatter stringFromDate:endDate];
+    NSDate *td = [todaysDateFormatter dateFromString:localDateString];
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:dueDate
+                                                          toDate:td
+                                                         options:0];
     
-    [cell.nameLabel setText:[NSString stringWithFormat:@"%@",data[indexPath.row][@"name"]]];
-    [cell.priceLabel setText:[NSString stringWithFormat:@"$%@",data[indexPath.row][@"price"]]];
-    [cell.statusLabel setText:dueString];
+    NSInteger diff = [components day];
+    //NSLog(@"DUE DATE: %@", dueDate);
+    //NSLog(@"TODAYS DATE: %@", td);
+    //NSLog(@"DIFFERENCE IN DATE FROM TODAY: %ld", labs(diff));
+    
+    
+    
+    NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
+    //[decimalStyleFormatter setNumberStyle:@"##.##"];
+    [decimalStyleFormatter setMaximumFractionDigits:2];
+
+    NSString *priceString = [decimalStyleFormatter stringFromNumber:data[(NSUInteger) indexPath.row][@"price"]];
+    NSString *formattedPrice = [[[NSString alloc] initWithFormat: @"$%@ - ", priceString] stringByAppendingString: dueString];
+    
+    [cell.nameLabel setText:[NSString stringWithFormat:@"%@",data[(NSUInteger) indexPath.row][@"name"]]];
+    [cell.priceLabel setText:formattedPrice];
+    [cell.statusLabel setText:[NSString stringWithFormat:@"%ldd",(long)labs(diff)]];
     
     
     cell.nameLabel.textColor   = FlatNavyBlueDark;
-    cell.priceLabel.textColor  = FlatGrayDark;
-    cell.autoPayCheck.textColor = FlatGrayDark;
-//    cell.nameLabel.textColor   = FlatWhite;
-//    cell.priceLabel.textColor  = FlatWhiteDark;
-//    cell.autoPayCheck.textColor = FlatWhiteDark;
-    
+    cell.priceLabel.textColor  = FlatGray;
+    cell.autoPayCheck.textColor = FlatGray;
     cell.backgroundColor = FlatWhite;
     
-    NSNumber *boolNumber = data[indexPath.row][@"autoPay"];
-    BOOL autoPay = boolNumber.boolValue;
+    NSNumber *boolNumber = data[(NSUInteger) indexPath.row][@"autoPay"];
+    bool autoPay = boolNumber.boolValue;
     if (autoPay == 1 ) {
         cell.autoPayCheck.text = @"Auto Pay";
     } else {
         cell.autoPayCheck.text = @"";
     }
-    cell.statusLabel.textColor = FlatGreen;
+    if (labs(diff) == 0) {
+        cell.statusLabel.text = @"Due Today";
+        cell.statusLabel.textColor = FlatRedDark;
+    }
+    if (labs(diff) <= 3) {
+        cell.statusLabel.textColor = FlatRedDark;
+    }
+    if (labs(diff) >= 4) {
+        cell.statusLabel.textColor = FlatYellowDark;
+    }
+    if (labs(diff) >= 7) {
+        cell.statusLabel.textColor = FlatGreenDark;
+    }
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    //NSIndexPath *selectedIndexPath = [tableView indexPathForSelectedRow];
+    //[self reoccur:selectedIndexPath];
+    
+    ReminderObject *newReminder = [[ReminderObject alloc]init];
+    
+    NSString *newName = data[indexPath.row][@"name"];
+    double newPrice = [data[indexPath.row][@"price"]doubleValue];
+    NSDate *oldDate = data[indexPath.row][@"dueDate"];
+    NSNumber *mb = data[indexPath.row][@"monthlyCheck"];
+    NSNumber *ab = data[indexPath.row][@"autoPay"];
+    
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setMonth:1];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:oldDate options:0];
+    
+    
+    
+    UIAlertController *alert = [UIAlertController
+                                 alertControllerWithTitle:newName
+                                 message:@""
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Mark As Paid"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    
+                                    if (mb.boolValue == 1) {
+                                        UIAlertController *al = [UIAlertController
+                                                                 alertControllerWithTitle:newName
+                                                                 message:@"This bill is monthly reoccuring and will be added automaticlly"
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                                        UIAlertAction* readd = [UIAlertAction
+                                                                    actionWithTitle:@"Continue, and Re-add"
+                                                                    style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction * action) {
+                                                                    bool mBOOL;
+                                                                    bool aBOOL;
+                                                                    [[RLMRealm defaultRealm] beginWriteTransaction];
+                                                                    [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+                                                                    [[RLMRealm defaultRealm] commitWriteTransaction];
+                                                                    
+                                                                    [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+                                                                    [tableView setEditing:NO animated:YES];
+                                                                    [self.tableView reloadData];
+                                                                    
+                                                                    newReminder.name = newName;
+                                                                    newReminder.price= newPrice;
+                                                                    newReminder.dueDate = newDate;
+                                                                    
+                                                                    mBOOL = 1;
+                                                                    newReminder.monthlyCheck = mBOOL;
+                                                                    if (ab.boolValue == 1) {
+                                                                        aBOOL = 1;
+                                                                        newReminder.autoPay = aBOOL;
+                                                                    } else {
+                                                                        aBOOL = 0;
+                                                                        newReminder.autoPay = aBOOL;
+                                                                    }
+                                                                    
+                                                                    [self addToRealm:newReminder];
+                                                                    [self.tableView reloadData];
+                                                                }];
+                                        UIAlertAction* dontReadd = [UIAlertAction
+                                                                    actionWithTitle:@"Do Not Re-add"
+                                                                    style:UIAlertActionStyleDefault
+                                                                    handler:^(UIAlertAction * action) {
+                                                                        [[RLMRealm defaultRealm] beginWriteTransaction];
+                                                                        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+                                                                        [[RLMRealm defaultRealm] commitWriteTransaction];
+                                                                        data=[ReminderObject allObjects];
+                                                                        
+                                                                        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+                                                                        [tableView setEditing:NO animated:YES];
+                                                                        [self.tableView reloadData];
+                                                                        [self updateTotalMonthPrice];
+                                                                        //HANDLE DONT ADD
+                                                                    }];
+                                        UIAlertAction* hideForever = [UIAlertAction
+                                                                    actionWithTitle:@"Do Not Show Again"
+                                                                    style:UIAlertActionStyleDefault
+                                                                    handler:^(UIAlertAction * action) {
+                                                                        //HANDLE DONT ADD
+                                                                    }];
+                                        UIAlertAction* cancel = [UIAlertAction
+                                                                    actionWithTitle:@"Cancel"
+                                                                    style:UIAlertActionStyleCancel
+                                                                    handler:^(UIAlertAction * action) {
+                                                                        //HANDLE DONT ADD
+                                                                    }];
+                                        [al addAction:readd];
+                                        [al addAction:dontReadd];
+                                        [al addAction:hideForever];
+                                        [al addAction:cancel];
+                                        [self presentViewController:al animated:YES completion:nil];
+                                        
+//                                        bool mBOOL;
+//                                        bool aBOOL;
+//                                        [[RLMRealm defaultRealm] beginWriteTransaction];
+//                                        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+//                                        [[RLMRealm defaultRealm] commitWriteTransaction];
+//                                        
+//                                        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+//                                        [tableView setEditing:NO animated:YES];
+//                                        [self.tableView reloadData];
+//                                        
+//                                        newReminder.name = newName;
+//                                        newReminder.price= newPrice;
+//                                        newReminder.dueDate = newDate;
+//                                        
+//                                        mBOOL = 1;
+//                                        newReminder.monthlyCheck = mBOOL;
+//                                        if (ab.boolValue == 1) {
+//                                            aBOOL = 1;
+//                                            newReminder.autoPay = aBOOL;
+//                                        } else {
+//                                            aBOOL = 0;
+//                                            newReminder.autoPay = aBOOL;
+//                                        }
+//
+//                                        [self addToRealm:newReminder];
+                                        
+                                    } else {
+//                                        [[RLMRealm defaultRealm] beginWriteTransaction];
+//                                        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+//                                        [[RLMRealm defaultRealm] commitWriteTransaction];
+//                                        data=[ReminderObject allObjects];
+//                                        
+//                                        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+//                                        [tableView setEditing:NO animated:YES];
+//                                        [self.tableView reloadData];
+                                    }
+                                    //[self.tableView reloadData];
+                                    //[self updateTotalMonthPrice];
+                                }];
+    
+    UIAlertAction* noButton = [UIAlertAction
+                               actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction * action) {
+                                   //Handle no, thanks button
+                               }];
+    
+    UIAlertAction* editButton = [UIAlertAction
+                               actionWithTitle:@"Edit"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //UINavigationController *bVC = [self.storyboard instantiateViewControllerWithIdentifier:@"billViewController"];
+                                   //[self presentViewController:bVC animated:YES completion:nil];
+                                   
+                               }];
+    
+    [alert addAction:yesButton];
+    [alert addAction:editButton];
+    [alert addAction:noButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+//-(void)reoccur:(NSIndexPath *)indexPath {
+//    
+//    ReminderObject *newReminder = [[ReminderObject alloc]init];
+//    
+//    NSString *newName = data[indexPath.row][@"name"];
+//    double newPrice = [data[indexPath.row][@"price"]doubleValue];
+//    NSDate *oldDate = data[indexPath.row][@"dueDate"];
+//    NSNumber *mb = data[indexPath.row][@"monthlyCheck"];
+//    
+//    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+//    [dateComponents setMonth:1];
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:oldDate options:0];
+//}
+-(void)updateTotalMonthPrice {
+    
+    NSNumber *sum = [data sumOfProperty:@"price"];
+    NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
+    [decimalStyleFormatter setMaximumFractionDigits:2];
+    NSString *sumString = [decimalStyleFormatter stringFromNumber:sum];
+    NSString *totalString = [[NSString alloc] initWithFormat: @"Total Monthly Bill Cost $%@", sumString];
+    _totalMonthlyBill.text = totalString;
+}
+
+-(void)addToRealm:(ReminderObject *)re {
+    realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addObject:re];
+    [realm commitWriteTransaction];
 }
 //
 //THIS IS HOW YOU USE THE DISPATCH_MAIN_AFTER BLOCK
@@ -203,9 +400,19 @@
 //
 //    
 //});
-static void dispatch_main_after(NSTimeInterval delay, void (^block)(void)){
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        block();
-    });
+//static void dispatch_main_after(NSTimeInterval delay, void (^block)(void)){
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        block();
+//    });
+//}
+- (IBAction)addButton:(id)sender {
+    //if(_billTypeSelector.selectedSegmentIndex == 0) {
+        
+        UINavigationController *bVC = [self.storyboard instantiateViewControllerWithIdentifier:@"billViewController"];
+        [self presentViewController:bVC animated:YES completion:nil];
+    //} else {
+    //    UINavigationController *iVC = [self.storyboard instantiateViewControllerWithIdentifier:@"iouViewController"];
+    //    [self presentViewController:iVC animated:YES completion:nil];
+    //}
 }
 @end

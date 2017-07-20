@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewEntryTableViewController : UITableViewController
+@interface NewEntryTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *autoPayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *monthlyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contactLabel;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UIDatePicker *dueDatePicker;
-@property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property (weak, nonatomic)   IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic)   IBOutlet UILabel *dueLabel;
+@property (weak, nonatomic)   IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic)   IBOutlet UILabel *autoPayLabel;
+@property (weak, nonatomic)   IBOutlet UILabel *monthlyLabel;
+@property (weak, nonatomic)   IBOutlet UILabel *contactLabel;
+@property (weak, nonatomic)   IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic)   IBOutlet UIDatePicker *dueDatePicker;
+@property (weak, nonatomic)   IBOutlet UITextField *priceTextField;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *taxSegemntControl;
+- (IBAction)taxSegmentControl:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *customTaxTextField;
+@property (strong, nonatomic) IBOutlet UILabel *customTaxLabel;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 //@property (strong, nonatomic) IBOutlet UITextField *contactNumberTextField;
 
 
@@ -39,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *autoPayCell;
 
 
+- (IBAction)nameCheck:(id)sender;
 
 
 

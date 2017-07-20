@@ -3,29 +3,38 @@ PODS:
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
   - CRToast (0.0.9)
+  - DGActivityIndicatorView (2.1.1)
   - DZNEmptyDataSet (1.8.1)
   - ionicons (2.0.3)
+  - IQKeyboardManager (4.0.10)
   - KVNProgress (2.3.1)
-  - Realm (2.4.3):
-    - Realm/Headers (= 2.4.3)
-  - Realm/Headers (2.4.3)
+  - MGSwipeTableCell (1.5.6)
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
 
 DEPENDENCIES:
   - ChameleonFramework
   - CRToast
+  - DGActivityIndicatorView
   - DZNEmptyDataSet
   - ionicons
+  - IQKeyboardManager
   - KVNProgress
+  - MGSwipeTableCell
   - Realm
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
+  DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
+  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
-  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
+  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
 
-PODFILE CHECKSUM: '09825e22a95fe1da4b256c2c7281bc3e724a7f23'
+PODFILE CHECKSUM: b05d4be93d4d087f04aefe2bc248af94f8c02b26
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

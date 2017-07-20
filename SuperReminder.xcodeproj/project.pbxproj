@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC17EC211EA2DB120094F6D5 /* NewIOUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC17EC201EA2DB120094F6D5 /* NewIOUTableViewController.m */; };
 		AC1E3FC61E4D9BEB006FB0AE /* NOTES in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3FC51E4D9BEB006FB0AE /* NOTES */; };
 		AC1E3FC91E4D9EF6006FB0AE /* bignoodletoo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3FC71E4D9EF6006FB0AE /* bignoodletoo.ttf */; };
 		AC1E3FCA1E4D9EF6006FB0AE /* koverwatch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3FC81E4D9EF6006FB0AE /* koverwatch.ttf */; };
@@ -45,6 +46,8 @@
 		081FF1DABB7E5AB69D95B1E5 /* Pods-SuperReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		5E98C12311225A3CE1E2F4AE /* Pods-SuperReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder.release.xcconfig"; sourceTree = "<group>"; };
 		6D859C41E72CA231B622A06B /* libPods-SuperReminder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperReminder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC17EC1F1EA2DB120094F6D5 /* NewIOUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewIOUTableViewController.h; sourceTree = "<group>"; };
+		AC17EC201EA2DB120094F6D5 /* NewIOUTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewIOUTableViewController.m; sourceTree = "<group>"; };
 		AC1E3FC51E4D9BEB006FB0AE /* NOTES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		AC1E3FC71E4D9EF6006FB0AE /* bignoodletoo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bignoodletoo.ttf; sourceTree = "<group>"; };
 		AC1E3FC81E4D9EF6006FB0AE /* koverwatch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = koverwatch.ttf; sourceTree = "<group>"; };
@@ -111,9 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				AC2853171E4C391F00B228C8 /* Realm Setup */,
+				AC3503821E521014006DC6AF /* Realm Data TableView Cell */,
 				AC28531B1E4C3CD000B228C8 /* New Entry TableView */,
 				AC28531F1E4C545B00B228C8 /* Realm Data TableView */,
-				AC3503821E521014006DC6AF /* Realm Data TableView Cell */,
 				AC2852ED1E4C388000B228C8 /* Main.storyboard */,
 				AC2852E31E4C388000B228C8 /* SuperReminder */,
 				AC2852FD1E4C388000B228C8 /* SuperReminderTests */,
@@ -190,6 +193,8 @@
 			children = (
 				AC28531C1E4C3D0000B228C8 /* NewEntryTableViewController.h */,
 				AC28531D1E4C3D0000B228C8 /* NewEntryTableViewController.m */,
+				AC17EC1F1EA2DB120094F6D5 /* NewIOUTableViewController.h */,
+				AC17EC201EA2DB120094F6D5 /* NewIOUTableViewController.m */,
 			);
 			name = "New Entry TableView";
 			sourceTree = "<group>";
@@ -386,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C6EC0416F6BE55DAE9C84D85 /* [CP] Embed Pods Frameworks */ = {
@@ -416,6 +421,7 @@
 				AC2852E91E4C388000B228C8 /* AppDelegate.m in Sources */,
 				AC2853221E4C547C00B228C8 /* RealmDataTableViewController.m in Sources */,
 				AC2852E61E4C388000B228C8 /* main.m in Sources */,
+				AC17EC211EA2DB120094F6D5 /* NewIOUTableViewController.m in Sources */,
 				AC28531E1E4C3D0000B228C8 /* NewEntryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,11 +571,13 @@
 			baseConfigurationReference = 081FF1DABB7E5AB69D95B1E5 /* Pods-SuperReminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
 				INFOPLIST_FILE = SuperReminder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -579,11 +587,13 @@
 			baseConfigurationReference = 5E98C12311225A3CE1E2F4AE /* Pods-SuperReminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
 				INFOPLIST_FILE = SuperReminder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

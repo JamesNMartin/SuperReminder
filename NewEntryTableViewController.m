@@ -13,52 +13,53 @@
 #import <IonIcons.h>
 #import <KVNProgress/KVNProgress.h>
 #import <Chameleon.h>
+#import <IQKeyboardManager.h>
+#import <IQUIView+IQKeyboardToolbar.h>
+#import <IQUITextFieldView+Additions.h>
 
-
-@interface NewEntryTableViewController ()
+@interface NewEntryTableViewController ()<UIPopoverPresentationControllerDelegate>
 
 @end
 
 @implementation NewEntryTableViewController
 {
-    Boolean monthlyBOOL;
-    Boolean autoPayBOOL;
+    bool monthlyBOOL;
+    bool autoPayBOOL;
 }
 - (void)viewDidLoad {
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-     [super viewDidLoad];
+    [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated {
-    
+
+    [super viewWillAppear:YES]; // This line is needed for the 'auto slide up'
+    //self.saveButton.enabled = FALSE;
     self.navigationController.navigationBar.tintColor = FlatWhite;
-    
+
+    [self.closeButton setTitle:nil];
+    [self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:30.0f color:FlatWhite]];
+
+    [self.saveButton setTitle:nil];
+    [self.saveButton setImage:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:32.0f color:FlatWhite]];
+
     monthlyBOOL = false;
-    
-    self.navigationController.navigationBar.barTintColor = FlatMaroonDark;
-    //self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.74 green:0.75 blue:0.74 alpha:1.00];
+
+    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark;
     self.navigationController.navigationBar.translucent = NO;
-    //self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
+
+    _customTaxLabel.enabled = false; // THIS IS TO ENABLE LATER SO WE CAN HAVE A TOGGLE FOR CUSTOM
+    _customTaxTextField.enabled = false; // SAME AS ABOVE
     
-    //self.view.backgroundColor =  [UIColor colorWithRed:0.49 green:0.51 blue:0.52 alpha:1.00];
-    
-    //[self.tableView setSeparatorColor:[UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00]];
-    
-    //LABEL COLORS ###################################################################################################
-    _nameLabel.textColor =    [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    _priceLabel.textColor =   [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    _monthlyLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    _autoPayLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    _monthlyLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    _contactLabel.textColor = [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    _dueLabel.textColor =     [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00];
-    
-    _taxSegemntControl.tintColor = FlatMaroonDark;
-    //################################################################################################################
+    //COLORS ###########################################################################################################
+    _nameLabel.textColor = FlatNavyBlueDark;
+    _priceLabel.textColor = FlatNavyBlueDark;
+    _monthlyLabel.textColor = FlatNavyBlueDark;
+    _autoPayLabel.textColor = FlatNavyBlueDark;
+    _monthlyLabel.textColor = FlatNavyBlueDark;
+    _contactLabel.textColor = FlatNavyBlueDark;
+    _dueLabel.textColor = FlatNavyBlueDark;
+    _customTaxLabel.textColor = FlatNavyBlue;
+    _taxSegemntControl.tintColor = FlatNavyBlueDark;
+    //##################################################################################################################
     
     dispatch_main_after(0.5f, ^{
         [_nameTextField becomeFirstResponder];
@@ -68,7 +69,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -78,19 +78,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 6;
+    return 7;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     //cell.backgroundColor = [UIColor colorWithRed:0.74 green:0.75 blue:0.74 alpha:1.00];
-    
-    
     return cell;
     
 }
-
-
 -(NSDictionary*)errorToast {
 
     NSMutableDictionary *options = [@{
@@ -99,7 +95,7 @@
                               kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue-LightItalic" size:17],
                               kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_help_outline size:36.0 color:[UIColor whiteColor]],
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : FlatRed,
+                              kCRToastBackgroundColorKey : FlatRedDark,
                               kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
                               kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
                               kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
@@ -113,10 +109,13 @@
     Boolean tappable = true;
     
     if (tappable == true) {
-        options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
+        options[kCRToastInteractionRespondersKey] = @[
+                [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
                                                                                                       automaticallyDismiss:YES
-                                                                                                                     block:^(CRToastInteractionType interactionType){
-                                                                                                                         NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
+                                                                               block:^(CRToastInteractionType interactionType){
+                                                                                   NSLog(@"Dismissed with %@ interaction",
+                                                                                           NSStringFromCRToastInteractionType
+                                                                                                   (interactionType));
                                                                                                                      }]];
     }
     return [NSDictionary dictionaryWithDictionary:options];
@@ -129,7 +128,7 @@
                                       kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:[UIColor whiteColor]],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : FlatBlue,
+                                      kCRToastBackgroundColorKey : FlatNavyBlue,
                                       kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
                                       kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
                                       kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
@@ -143,10 +142,13 @@
     Boolean tappable = true;
     
     if (tappable == true) {
-        options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
+        options[kCRToastInteractionRespondersKey] = @[
+                [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
                                                                                                       automaticallyDismiss:YES
-                                                                                                                     block:^(CRToastInteractionType interactionType){
-                                                                                                                         NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
+                                                                               block:^(CRToastInteractionType interactionType){
+                                                                                   NSLog(@"Dismissed with %@ interaction",
+                                                                                           NSStringFromCRToastInteractionType
+                                                                                                   (interactionType));
                                                                                                                      }]];
     }
     return [NSDictionary dictionaryWithDictionary:options];
@@ -157,13 +159,17 @@
     
     ReminderObject *reminder = [[ReminderObject alloc]init];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    NSDate *dueDate = _dueDatePicker.date;
-    NSString *dueString = [dateFormatter stringFromDate:dueDate];
     
+    NSDate *dueDate = _dueDatePicker.date;
+    NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    NSString *dueString = [dateFormatter stringFromDate:dueDate];
+    NSDate *dd = [dateFormatter dateFromString:dueString];
     
     if ([self.nameTextField.text isEqual:@""]) {
+        
         
         [CRToastManager showNotificationWithOptions:[self errorToast]
                                      apperanceBlock:^(void) {
@@ -177,7 +183,7 @@
         
         reminder.name = self.nameTextField.text;
         //reminder.price = [priceStringToDouble doubleValue];
-        reminder.dueDate = dueDate;
+        reminder.dueDate = dd;
         reminder.monthlyCheck = monthlyBOOL;
         reminder.autoPay = autoPayBOOL;
         
@@ -193,15 +199,12 @@
         if (_taxSegemntControl.selectedSegmentIndex == 2) {
             printf("NOTHING HANDLED HERE YET");
         }
-        
-        
-        
-        NSLog(@"NAME: %@", self.nameTextField.text);
-        NSLog(@"PRICE: %@", self.priceTextField.text);
-        NSLog(@"DUE DATE: %@", dueString);
-        NSLog(@"MONTHLY CHECK: %hhu", monthlyBOOL);
-        NSLog(@"AUTO PAY CHECK: %hhu", autoPayBOOL);
-        printf("\n");
+//        NSLog(@"NAME: %@", self.nameTextField.text);
+//        NSLog(@"PRICE: %@", self.priceTextField.text);
+//        NSLog(@"DUE DATE: %@", dueString);
+//        NSLog(@"MONTHLY CHECK: %hhu", monthlyBOOL);
+//        NSLog(@"AUTO PAY CHECK: %hhu", autoPayBOOL);
+//        printf("\n");
         
         [self addToRealm:reminder];
         
@@ -220,25 +223,9 @@
     dispatch_main_after(0.25f, ^{
         [self dismissViewControllerAnimated:YES completion:nil];
     });
-//
-//  THIS IS A MAYBE
-//
-//        FCAlertView *alert = [[FCAlertView alloc] init];
-//        
-//        [alert makeAlertTypeWarning];
-//        alert.bounceAnimations = YES;
-//        alert.animateAlertInFromTop = YES;
-//        alert.animateAlertOutToBottom = YES;
-//        //[alert setAlertSoundWithFileName:@"Ding.mp3"];
-//        [alert showAlertInView:self
-//                     withTitle:@"Cancel Entry?"
-//                  withSubtitle:@"You will lose all entered data."
-//               withCustomImage:nil
-//           withDoneButtonTitle:@"Continue"
-//                    andButtons:@[@"Cancel"]];
 }
 - (IBAction)monthlyTapped:(id)sender {
-    if (monthlyBOOL == false) {
+    if (!monthlyBOOL) {
         monthlyBOOL = true;
         _monthlyCell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -247,12 +234,18 @@
     }
 }
 - (IBAction)autoPayTapped:(id)sender {
-    if (autoPayBOOL == false) {
+    if (!autoPayBOOL) {
         autoPayBOOL = true;
         _autoPayCell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         autoPayBOOL = false;
         _autoPayCell.accessoryType = UITableViewCellAccessoryNone;
+    }
+}
+- (IBAction)nameCheck:(id)sender {
+    while(_nameTextField.text != NULL) {
+        _saveButton.enabled = TRUE;
+        break;
     }
 }
 -(void)addToRealm:(ReminderObject *)re {
@@ -271,6 +264,15 @@
         //NSLog(@"DATA CHECK SUCCESS");
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"dataStored" object:nil];
+    }
+}
+- (IBAction)taxSegmentControl:(id)sender {
+    if (_taxSegemntControl.selectedSegmentIndex == 2) {
+        _customTaxLabel.enabled = true;
+        _customTaxTextField.enabled = true;
+    } else {
+        _customTaxLabel.enabled = false;
+        _customTaxTextField.enabled = false;
     }
 }
 static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))

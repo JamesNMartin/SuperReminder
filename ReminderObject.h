@@ -14,7 +14,7 @@
 @property double price;
 @property NSString *name;
 @property NSDate *dueDate;
-@property BOOL monthlyCheck;
-@property BOOL autoPay;
+@property bool monthlyCheck;
+@property bool autoPay;
 
 @end

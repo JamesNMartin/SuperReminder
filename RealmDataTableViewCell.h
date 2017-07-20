@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MGSwipeTableCell.h>
 
-@interface RealmDataTableViewCell : UITableViewCell
+@interface RealmDataTableViewCell : MGSwipeTableCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *autoPayCheck;
+//@property (weak, nonatomic) IBOutlet UILabel *dateDue;
 
 
 

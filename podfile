@@ -6,4 +6,7 @@ pod 'ChameleonFramework'
 pod 'Realm'
 pod 'DZNEmptyDataSet'
 pod 'KVNProgress'
+pod 'MGSwipeTableCell'
+pod 'DGActivityIndicatorView'
+pod 'IQKeyboardManager'
 end
