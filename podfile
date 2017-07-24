@@ -9,4 +9,5 @@ pod 'KVNProgress'
 pod 'MGSwipeTableCell'
 pod 'DGActivityIndicatorView'
 pod 'IQKeyboardManager'
+pod 'FCAlertView'
 end

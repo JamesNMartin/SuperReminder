@@ -22,6 +22,8 @@
 		AC28531E1E4C3D0000B228C8 /* NewEntryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28531D1E4C3D0000B228C8 /* NewEntryTableViewController.m */; };
 		AC2853221E4C547C00B228C8 /* RealmDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2853211E4C547C00B228C8 /* RealmDataTableViewController.m */; };
 		AC3503851E521046006DC6AF /* RealmDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */; };
+		AC7BB4CB1F2563DA005A23C3 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7BB4CA1F2563DA005A23C3 /* SettingsTableViewController.m */; };
+		AC7BB4CF1F256944005A23C3 /* RealmSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7BB4CE1F256944005A23C3 /* RealmSettings.m */; };
 		FC77A4822A9B8DDE4BE7E73D /* libPods-SuperReminder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D859C41E72CA231B622A06B /* libPods-SuperReminder.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,10 @@
 		AC2853211E4C547C00B228C8 /* RealmDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmDataTableViewController.m; sourceTree = "<group>"; };
 		AC3503831E521046006DC6AF /* RealmDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealmDataTableViewCell.h; sourceTree = "<group>"; };
 		AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmDataTableViewCell.m; sourceTree = "<group>"; };
+		AC7BB4C91F2563DA005A23C3 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		AC7BB4CA1F2563DA005A23C3 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		AC7BB4CD1F256944005A23C3 /* RealmSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealmSettings.h; sourceTree = "<group>"; };
+		AC7BB4CE1F256944005A23C3 /* RealmSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +119,13 @@
 		AC2852D81E4C388000B228C8 = {
 			isa = PBXGroup;
 			children = (
+				AC2852ED1E4C388000B228C8 /* Main.storyboard */,
+				AC7BB4CC1F2568F5005A23C3 /* Realm Settings */,
 				AC2853171E4C391F00B228C8 /* Realm Setup */,
 				AC3503821E521014006DC6AF /* Realm Data TableView Cell */,
-				AC28531B1E4C3CD000B228C8 /* New Entry TableView */,
 				AC28531F1E4C545B00B228C8 /* Realm Data TableView */,
-				AC2852ED1E4C388000B228C8 /* Main.storyboard */,
+				AC28531B1E4C3CD000B228C8 /* New Entry TableView */,
+				AC7BB4C81F25639D005A23C3 /* Settings TableVIew */,
 				AC2852E31E4C388000B228C8 /* SuperReminder */,
 				AC2852FD1E4C388000B228C8 /* SuperReminderTests */,
 				AC2853081E4C388000B228C8 /* SuperReminderUITests */,
@@ -215,6 +223,24 @@
 				AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */,
 			);
 			name = "Realm Data TableView Cell";
+			sourceTree = "<group>";
+		};
+		AC7BB4C81F25639D005A23C3 /* Settings TableVIew */ = {
+			isa = PBXGroup;
+			children = (
+				AC7BB4C91F2563DA005A23C3 /* SettingsTableViewController.h */,
+				AC7BB4CA1F2563DA005A23C3 /* SettingsTableViewController.m */,
+			);
+			name = "Settings TableVIew";
+			sourceTree = "<group>";
+		};
+		AC7BB4CC1F2568F5005A23C3 /* Realm Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AC7BB4CD1F256944005A23C3 /* RealmSettings.h */,
+				AC7BB4CE1F256944005A23C3 /* RealmSettings.m */,
+			);
+			name = "Realm Settings";
 			sourceTree = "<group>";
 		};
 		B8602D7AB1FEE070255381F0 /* Frameworks */ = {
@@ -416,8 +442,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7BB4CB1F2563DA005A23C3 /* SettingsTableViewController.m in Sources */,
 				AC28531A1E4C394500B228C8 /* ReminderObject.m in Sources */,
 				AC3503851E521046006DC6AF /* RealmDataTableViewCell.m in Sources */,
+				AC7BB4CF1F256944005A23C3 /* RealmSettings.m in Sources */,
 				AC2852E91E4C388000B228C8 /* AppDelegate.m in Sources */,
 				AC2853221E4C547C00B228C8 /* RealmDataTableViewController.m in Sources */,
 				AC2852E61E4C388000B228C8 /* main.m in Sources */,

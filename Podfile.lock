@@ -5,6 +5,7 @@ PODS:
   - CRToast (0.0.9)
   - DGActivityIndicatorView (2.1.1)
   - DZNEmptyDataSet (1.8.1)
+  - FCAlertView (1.3.1)
   - ionicons (2.0.3)
   - IQKeyboardManager (4.0.10)
   - KVNProgress (2.3.1)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - CRToast
   - DGActivityIndicatorView
   - DZNEmptyDataSet
+  - FCAlertView
   - ionicons
   - IQKeyboardManager
   - KVNProgress
@@ -29,12 +31,13 @@ SPEC CHECKSUMS:
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FCAlertView: '083c067bfd98f147abf5a66fe0e31cefac7bc809'
   ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
 
-PODFILE CHECKSUM: b05d4be93d4d087f04aefe2bc248af94f8c02b26
+PODFILE CHECKSUM: 7d5097c9f0c43edc0b81d200ba2245c247a5fd22
 
 COCOAPODS: 1.2.1
