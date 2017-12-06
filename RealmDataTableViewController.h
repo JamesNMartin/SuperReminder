@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FCAlertView.h>
 
-@interface RealmDataTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, FCAlertViewDelegate>
+@interface RealmDataTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
 - (IBAction)clearButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;

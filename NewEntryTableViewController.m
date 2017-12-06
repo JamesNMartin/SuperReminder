@@ -13,9 +13,9 @@
 #import <IonIcons.h>
 #import <KVNProgress/KVNProgress.h>
 #import <Chameleon.h>
-#import <IQKeyboardManager.h>
-#import <IQUIView+IQKeyboardToolbar.h>
-#import <IQUITextFieldView+Additions.h>
+//#import <IQKeyboardManager.h>
+//#import <IQUIView+IQKeyboardToolbar.h>
+//#import <IQUITextFieldView+Additions.h>
 
 @interface NewEntryTableViewController ()<UIPopoverPresentationControllerDelegate>
 
@@ -31,15 +31,17 @@
 }
 -(void)viewWillAppear:(BOOL)animated {
 
-    [super viewWillAppear:YES]; // This line is needed for the 'auto slide up'
+    //[super viewWillAppear:YES]; // This line is needed for the 'auto slide up'
     //self.saveButton.enabled = FALSE;
     self.navigationController.navigationBar.tintColor = FlatWhite;
 
     [self.closeButton setTitle:nil];
-    [self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:30.0f color:FlatWhite]];
+    //OG icon size 30
+    [self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:38.0f color:FlatWhite]];
 
     [self.saveButton setTitle:nil];
-    [self.saveButton setImage:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:32.0f color:FlatWhite]];
+    //OG icon size 32
+    [self.saveButton setImage:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:40.0f color:FlatWhite]];
 
     monthlyBOOL = false;
 

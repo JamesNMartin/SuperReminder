@@ -2,13 +2,15 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
   - CRToast (0.0.9)
   - DGActivityIndicatorView (2.1.1)
   - DZNEmptyDataSet (1.8.1)
-  - FCAlertView (1.3.1)
+  - Fabric (1.7.2)
   - ionicons (2.0.3)
-  - IQKeyboardManager (4.0.10)
   - KVNProgress (2.3.1)
+  - LGAlertView (2.4.0)
   - MGSwipeTableCell (1.5.6)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
@@ -16,28 +18,30 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework
+  - Crashlytics
   - CRToast
   - DGActivityIndicatorView
   - DZNEmptyDataSet
-  - FCAlertView
+  - Fabric
   - ionicons
-  - IQKeyboardManager
   - KVNProgress
+  - LGAlertView
   - MGSwipeTableCell
   - Realm
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FCAlertView: '083c067bfd98f147abf5a66fe0e31cefac7bc809'
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
-  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+  LGAlertView: 2f5e83dd5cc2537de57d98727650609e86197d1a
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
 
-PODFILE CHECKSUM: 7d5097c9f0c43edc0b81d200ba2245c247a5fd22
+PODFILE CHECKSUM: d32a32dc2027eb0125a01f9746925c75e53df4b4
 
 COCOAPODS: 1.2.1

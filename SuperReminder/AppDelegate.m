@@ -7,11 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import <IQKeyboardManager.h>
-#import <IQUIView+IQKeyboardToolbar.h>
-#import <IQUITextFieldView+Additions.h>
+//#import <IQKeyboardManager.h>
+//#import <IQUIView+IQKeyboardToolbar.h>
+//#import <IQUITextFieldView+Additions.h>
 #import <Chameleon.h>
-
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -21,11 +22,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [Fabric with:@[[Crashlytics class]]];
+    
+    
+    /* THIS FOR SOME REASON IS NO LONGER WORKING. BUTTON APPEAR TO BE INVISABLE.
     [[IQKeyboardManager sharedManager] setToolbarTintColor:FlatNavyBlueDark];
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:800];
     [[IQKeyboardManager sharedManager] setEnable:YES];
+    */
+    
+    
+    
     
     //    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.23 green:0.24 blue:0.25 alpha:1.00]}];
     

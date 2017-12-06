@@ -18,7 +18,6 @@
 #import "RealmDataTableViewCell.h"
 #import "NewEntryTableViewController.h"
 #import <DGActivityIndicatorView.h>
-#import "FCAlertView.h"
 
 @interface RealmDataTableViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
     
@@ -38,39 +37,39 @@
 }
 - (IBAction)clearButton:(id)sender {
     
-    FCAlertView *alert = [[FCAlertView alloc] init];
-    alert.delegate = self;
-    alert.blurBackground = YES;
-    alert.detachButtons = YES;
-    alert.hideSeparatorLineView = NO;
-    alert.bounceAnimations = YES;
-    alert.animateAlertInFromTop = YES;
-    alert.dismissOnOutsideTouch = YES;
+    //    FCAlertView *alert = [[FCAlertView alloc] init];
+    //    
+    //    alert.blurBackground = YES;
+    //    alert.detachButtons = YES;
+    //    alert.hideSeparatorLineView = NO;
+    //    alert.bounceAnimations = YES;
+    //    alert.animateAlertInFromTop = YES;
+    //    alert.dismissOnOutsideTouch = YES;
+    //    
+    //    alert.titleColor = FlatNavyBlueDark;
+    //    alert.firstButtonTitleColor = [UIColor whiteColor];
+    //    alert.secondButtonTitleColor = [UIColor whiteColor];
+    //    alert.doneButtonTitleColor = FlatNavyBlueDark;
+    //    
+    //    alert.firstButtonBackgroundColor = FlatNavyBlueDark;
+    //    alert.secondButtonBackgroundColor = FlatNavyBlueDark;
+    //    
+    //    alert.tintColor = FlatNavyBlueDark;
+    //    
+    //    [alert addButton:@"Continue" withActionBlock:^{
+    //        // Put your action here
+    //    }];
+    //    [alert addButton:@"Remove" withActionBlock:^{
+    //        // Put your action here
+    //    }];
+    //    [alert showAlertWithTitle:@"AT&T - $164.45"
+    //                 withSubtitle:@"If this bill is monthly reoccuring and will be created for the next month automatically."
+    //              withCustomImage:nil
+    //          withDoneButtonTitle:@"Cancel"
+    //                   andButtons:nil];
     
-    alert.titleColor = FlatNavyBlueDark;
-    alert.firstButtonTitleColor = [UIColor whiteColor];
-    alert.secondButtonTitleColor = [UIColor whiteColor];
-    alert.doneButtonTitleColor = FlatNavyBlueDark;
-    
-    alert.firstButtonBackgroundColor = FlatNavyBlueDark;
-    alert.secondButtonBackgroundColor = FlatNavyBlueDark;
-    
-    alert.tintColor = FlatNavyBlueDark;
-    
-    [alert addButton:@"Continue" withActionBlock:^{
-        // Put your action here
-    }];
-    [alert addButton:@"Remove" withActionBlock:^{
-        // Put your action here
-    }];
-    [alert showAlertWithTitle:@"AT&T - $164.45"
-                 withSubtitle:@"If this bill is monthly reoccuring and will be created for the next month automatically."
-              withCustomImage:nil
-          withDoneButtonTitle:@"Cancel"
-                   andButtons:nil];
-    
-    //UINavigationController *sVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
-    //[self presentViewController:sVC animated:YES completion:nil];
+    UINavigationController *sVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
+    [self presentViewController:sVC animated:YES completion:nil];
     
     //UNCOMMENT TO RE-ADD THE MASS DELETE REALM DATA FILE
     //##############################################################################################################
@@ -88,6 +87,7 @@
     //                                }];
     //##############################################################################################################
 }
+
 -(NSDictionary*)successToast {
     
     NSMutableDictionary *options = [@{
@@ -226,12 +226,10 @@
                                                         fromDate:td
                                                           toDate:dueDate
                                                          options:0];
-    
     NSInteger diff = [components day];
     //NSLog(@"DUE DATE: %@", dueDate);
     //NSLog(@"TODAYS DATE: %@", td);
     //NSLog(@"DIFFERENCE IN DATE FROM TODAY: %ld", labs(diff));
-    
     
     
     NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
@@ -281,6 +279,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    //[self.view addSubview:blurEffectView];
     //NSIndexPath *selectedIndexPath = [tableView indexPathForSelectedRow];
     //[self reoccur:selectedIndexPath];
     
@@ -342,7 +341,7 @@
                                     [self.tableView reloadData];
                                 }];
         UIAlertAction* dontReadd = [UIAlertAction
-                                    actionWithTitle:@"Remove"
+                                    actionWithTitle:@"Delete"
                                     style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action) {
                                         [[RLMRealm defaultRealm] beginWriteTransaction];
@@ -378,7 +377,7 @@
         [al addAction:readd];
         [al addAction:dontReadd];
         [al addAction:editButton];
-        [al addAction:hideForever];
+        //[al addAction:hideForever];
         [al addAction:cancel];
         [self presentViewController:al animated:YES completion:nil];
         
