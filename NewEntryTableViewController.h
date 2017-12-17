@@ -42,6 +42,7 @@
 - (IBAction)autoPayTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableViewCell *autoPayCell;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
 
 - (IBAction)nameCheck:(id)sender;
 

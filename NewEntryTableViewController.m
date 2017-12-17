@@ -175,10 +175,11 @@
         
         [CRToastManager showNotificationWithOptions:[self errorToast]
                                      apperanceBlock:^(void) {
+                                         self.nameLabel.textColor = FlatRedDark;
                                      }
                                     completionBlock:^(void) {
+                                        self.nameLabel.textColor = [UIColor blackColor];
                                     }];
-        
     } else {
         
         NSString *priceStringToDouble = self.priceTextField.text;

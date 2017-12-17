@@ -18,6 +18,7 @@
 #import "RealmDataTableViewCell.h"
 #import "NewEntryTableViewController.h"
 #import <DGActivityIndicatorView.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface RealmDataTableViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
     
@@ -125,7 +126,7 @@
                                       kCRToastTextKey: @"Bill Paid",
                                       kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:18],
                                       kCRToastTextColorKey: FlatWhite,
-                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:36.0 color:FlatWhite],
+                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_cash size:36.0 color:FlatWhite],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
                                       kCRToastBackgroundColorKey : FlatForestGreen,

@@ -24,6 +24,15 @@
 		AC3503851E521046006DC6AF /* RealmDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3503841E521046006DC6AF /* RealmDataTableViewCell.m */; };
 		AC7BB4CB1F2563DA005A23C3 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7BB4CA1F2563DA005A23C3 /* SettingsTableViewController.m */; };
 		AC7BB4CF1F256944005A23C3 /* RealmSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7BB4CE1F256944005A23C3 /* RealmSettings.m */; };
+		AC85F0B21FE658BE00100238 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC85F0B01FE658BE00100238 /* Interface.storyboard */; };
+		AC85F0B41FE658BE00100238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC85F0B31FE658BE00100238 /* Assets.xcassets */; };
+		AC85F0BB1FE658BF00100238 /* SuperReminderWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC85F0BA1FE658BF00100238 /* SuperReminderWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC85F0C11FE658BF00100238 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85F0C01FE658BF00100238 /* InterfaceController.m */; };
+		AC85F0C41FE658BF00100238 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85F0C31FE658BF00100238 /* ExtensionDelegate.m */; };
+		AC85F0C71FE658BF00100238 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85F0C61FE658BF00100238 /* NotificationController.m */; };
+		AC85F0CA1FE658BF00100238 /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85F0C91FE658BF00100238 /* ComplicationController.m */; };
+		AC85F0CC1FE658BF00100238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC85F0CB1FE658BF00100238 /* Assets.xcassets */; };
+		AC85F0D11FE658BF00100238 /* SuperReminderWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC85F0AE1FE658BE00100238 /* SuperReminderWatch.app */; };
 		FC77A4822A9B8DDE4BE7E73D /* libPods-SuperReminder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D859C41E72CA231B622A06B /* libPods-SuperReminder.a */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +51,46 @@
 			remoteGlobalIDString = AC2852E01E4C388000B228C8;
 			remoteInfo = SuperReminder;
 		};
+		AC85F0BC1FE658BF00100238 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC2852D91E4C388000B228C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC85F0B91FE658BF00100238;
+			remoteInfo = "SuperReminderWatch Extension";
+		};
+		AC85F0CF1FE658BF00100238 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC2852D91E4C388000B228C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC85F0AD1FE658BE00100238;
+			remoteInfo = SuperReminderWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC85F0D71FE658BF00100238 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AC85F0BB1FE658BF00100238 /* SuperReminderWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC85F0D91FE658BF00100238 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AC85F0D11FE658BF00100238 /* SuperReminderWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		081FF1DABB7E5AB69D95B1E5 /* Pods-SuperReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperReminder/Pods-SuperReminder.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +127,22 @@
 		AC7BB4CA1F2563DA005A23C3 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		AC7BB4CD1F256944005A23C3 /* RealmSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealmSettings.h; sourceTree = "<group>"; };
 		AC7BB4CE1F256944005A23C3 /* RealmSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmSettings.m; sourceTree = "<group>"; };
+		AC85F0AE1FE658BE00100238 /* SuperReminderWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperReminderWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC85F0B11FE658BE00100238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		AC85F0B31FE658BE00100238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC85F0B51FE658BE00100238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC85F0BA1FE658BF00100238 /* SuperReminderWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SuperReminderWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC85F0BF1FE658BF00100238 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		AC85F0C01FE658BF00100238 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		AC85F0C21FE658BF00100238 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		AC85F0C31FE658BF00100238 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		AC85F0C51FE658BF00100238 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		AC85F0C61FE658BF00100238 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		AC85F0C81FE658BF00100238 /* ComplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplicationController.h; sourceTree = "<group>"; };
+		AC85F0C91FE658BF00100238 /* ComplicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplicationController.m; sourceTree = "<group>"; };
+		AC85F0CB1FE658BF00100238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC85F0CD1FE658BF00100238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC85F0CE1FE658BF00100238 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +162,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AC2853021E4C388000B228C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC85F0B71FE658BF00100238 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,6 +200,8 @@
 				AC2852E31E4C388000B228C8 /* SuperReminder */,
 				AC2852FD1E4C388000B228C8 /* SuperReminderTests */,
 				AC2853081E4C388000B228C8 /* SuperReminderUITests */,
+				AC85F0AF1FE658BE00100238 /* SuperReminderWatch */,
+				AC85F0BE1FE658BF00100238 /* SuperReminderWatch Extension */,
 				AC2852E21E4C388000B228C8 /* Products */,
 				3EDF373BCFBFEFAA5CB2866C /* Pods */,
 				B8602D7AB1FEE070255381F0 /* Frameworks */,
@@ -141,6 +214,8 @@
 				AC2852E11E4C388000B228C8 /* SuperReminder.app */,
 				AC2852FA1E4C388000B228C8 /* SuperReminderTests.xctest */,
 				AC2853051E4C388000B228C8 /* SuperReminderUITests.xctest */,
+				AC85F0AE1FE658BE00100238 /* SuperReminderWatch.app */,
+				AC85F0BA1FE658BF00100238 /* SuperReminderWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,6 +318,34 @@
 			name = "Realm Settings";
 			sourceTree = "<group>";
 		};
+		AC85F0AF1FE658BE00100238 /* SuperReminderWatch */ = {
+			isa = PBXGroup;
+			children = (
+				AC85F0B01FE658BE00100238 /* Interface.storyboard */,
+				AC85F0B31FE658BE00100238 /* Assets.xcassets */,
+				AC85F0B51FE658BE00100238 /* Info.plist */,
+			);
+			path = SuperReminderWatch;
+			sourceTree = "<group>";
+		};
+		AC85F0BE1FE658BF00100238 /* SuperReminderWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC85F0BF1FE658BF00100238 /* InterfaceController.h */,
+				AC85F0C01FE658BF00100238 /* InterfaceController.m */,
+				AC85F0C21FE658BF00100238 /* ExtensionDelegate.h */,
+				AC85F0C31FE658BF00100238 /* ExtensionDelegate.m */,
+				AC85F0C51FE658BF00100238 /* NotificationController.h */,
+				AC85F0C61FE658BF00100238 /* NotificationController.m */,
+				AC85F0C81FE658BF00100238 /* ComplicationController.h */,
+				AC85F0C91FE658BF00100238 /* ComplicationController.m */,
+				AC85F0CB1FE658BF00100238 /* Assets.xcassets */,
+				AC85F0CD1FE658BF00100238 /* Info.plist */,
+				AC85F0CE1FE658BF00100238 /* PushNotificationPayload.apns */,
+			);
+			path = "SuperReminderWatch Extension";
+			sourceTree = "<group>";
+		};
 		B8602D7AB1FEE070255381F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,10 +368,12 @@
 				C6EC0416F6BE55DAE9C84D85 /* [CP] Embed Pods Frameworks */,
 				45E1068FB420033F88BE7FED /* [CP] Copy Pods Resources */,
 				ACA951391FC5F11E00E00116 /* ShellScript */,
+				AC85F0D91FE658BF00100238 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AC85F0D01FE658BF00100238 /* PBXTargetDependency */,
 			);
 			name = SuperReminder;
 			productName = SuperReminder;
@@ -311,6 +416,40 @@
 			productReference = AC2853051E4C388000B228C8 /* SuperReminderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AC85F0AD1FE658BE00100238 /* SuperReminderWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC85F0D81FE658BF00100238 /* Build configuration list for PBXNativeTarget "SuperReminderWatch" */;
+			buildPhases = (
+				AC85F0AC1FE658BE00100238 /* Resources */,
+				AC85F0D71FE658BF00100238 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC85F0BD1FE658BF00100238 /* PBXTargetDependency */,
+			);
+			name = SuperReminderWatch;
+			productName = SuperReminderWatch;
+			productReference = AC85F0AE1FE658BE00100238 /* SuperReminderWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AC85F0B91FE658BF00100238 /* SuperReminderWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC85F0D61FE658BF00100238 /* Build configuration list for PBXNativeTarget "SuperReminderWatch Extension" */;
+			buildPhases = (
+				AC85F0B61FE658BF00100238 /* Sources */,
+				AC85F0B71FE658BF00100238 /* Frameworks */,
+				AC85F0B81FE658BF00100238 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SuperReminderWatch Extension";
+			productName = "SuperReminderWatch Extension";
+			productReference = AC85F0BA1FE658BF00100238 /* SuperReminderWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -338,6 +477,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = AC2852E01E4C388000B228C8;
 					};
+					AC85F0AD1FE658BE00100238 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 9XZ4F4T9QB;
+						ProvisioningStyle = Automatic;
+					};
+					AC85F0B91FE658BF00100238 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 9XZ4F4T9QB;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = AC2852DC1E4C388000B228C8 /* Build configuration list for PBXProject "SuperReminder" */;
@@ -356,6 +505,8 @@
 				AC2852E01E4C388000B228C8 /* SuperReminder */,
 				AC2852F91E4C388000B228C8 /* SuperReminderTests */,
 				AC2853041E4C388000B228C8 /* SuperReminderUITests */,
+				AC85F0AD1FE658BE00100238 /* SuperReminderWatch */,
+				AC85F0B91FE658BF00100238 /* SuperReminderWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -385,6 +536,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC85F0AC1FE658BE00100238 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC85F0B41FE658BE00100238 /* Assets.xcassets in Resources */,
+				AC85F0B21FE658BE00100238 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC85F0B81FE658BF00100238 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC85F0CC1FE658BF00100238 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +652,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC85F0B61FE658BF00100238 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC85F0C41FE658BF00100238 /* ExtensionDelegate.m in Sources */,
+				AC85F0CA1FE658BF00100238 /* ComplicationController.m in Sources */,
+				AC85F0C11FE658BF00100238 /* InterfaceController.m in Sources */,
+				AC85F0C71FE658BF00100238 /* NotificationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -496,6 +675,16 @@
 			isa = PBXTargetDependency;
 			target = AC2852E01E4C388000B228C8 /* SuperReminder */;
 			targetProxy = AC2853061E4C388000B228C8 /* PBXContainerItemProxy */;
+		};
+		AC85F0BD1FE658BF00100238 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC85F0B91FE658BF00100238 /* SuperReminderWatch Extension */;
+			targetProxy = AC85F0BC1FE658BF00100238 /* PBXContainerItemProxy */;
+		};
+		AC85F0D01FE658BF00100238 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC85F0AD1FE658BE00100238 /* SuperReminderWatch */;
+			targetProxy = AC85F0CF1FE658BF00100238 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -515,6 +704,14 @@
 				AC2852F31E4C388000B228C8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AC85F0B01FE658BE00100238 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC85F0B11FE658BE00100238 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -702,6 +899,90 @@
 			};
 			name = Release;
 		};
+		AC85F0D21FE658BF00100238 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = SuperReminderWatch_Extension;
+				INFOPLIST_FILE = SuperReminderWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		AC85F0D31FE658BF00100238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = SuperReminderWatch_Extension;
+				INFOPLIST_FILE = SuperReminderWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
+		AC85F0D41FE658BF00100238 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "SuperReminderWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		AC85F0D51FE658BF00100238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XZ4F4T9QB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "SuperReminderWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesnmartin.SuperReminder.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -737,6 +1018,24 @@
 			buildConfigurations = (
 				AC2853151E4C388000B228C8 /* Debug */,
 				AC2853161E4C388000B228C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC85F0D61FE658BF00100238 /* Build configuration list for PBXNativeTarget "SuperReminderWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC85F0D41FE658BF00100238 /* Debug */,
+				AC85F0D51FE658BF00100238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC85F0D81FE658BF00100238 /* Build configuration list for PBXNativeTarget "SuperReminderWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC85F0D21FE658BF00100238 /* Debug */,
+				AC85F0D31FE658BF00100238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
