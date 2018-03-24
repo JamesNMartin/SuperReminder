@@ -2,19 +2,19 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
-  - Crashlytics (3.9.3):
-    - Fabric (~> 1.7.2)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
   - CRToast (0.0.9)
   - DGActivityIndicatorView (2.1.1)
   - DZNEmptyDataSet (1.8.1)
-  - Fabric (1.7.2)
-  - ionicons (2.0.3)
+  - Fabric (1.7.6)
+  - ionicons (2.1.1)
   - KVNProgress (2.3.1)
   - LGAlertView (2.4.0)
-  - MGSwipeTableCell (1.5.6)
-  - Realm (2.8.3):
-    - Realm/Headers (= 2.8.3)
-  - Realm/Headers (2.8.3)
+  - MGSwipeTableCell (1.6.6)
+  - Realm (3.3.0):
+    - Realm/Headers (= 3.3.0)
+  - Realm/Headers (3.3.0)
 
 DEPENDENCIES:
   - ChameleonFramework
@@ -31,17 +31,17 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
-  ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  ionicons: 630bcd2c2970741c3359e3a35ad544e71d3c086b
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   LGAlertView: 2f5e83dd5cc2537de57d98727650609e86197d1a
-  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
-  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
+  Realm: 7d74ad6c5020432f58fe5e1df90bb6d97b2c7fef
 
 PODFILE CHECKSUM: d32a32dc2027eb0125a01f9746925c75e53df4b4
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

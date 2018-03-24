@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     //THIS WILL PRINT THE REALM FILE URL
-    //NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL);
+    NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL);
     [super viewDidLoad];
 }
 - (IBAction)clearButton:(id)sender {
@@ -152,25 +152,33 @@
     return [NSDictionary dictionaryWithDictionary:options];
 }
 -(void)viewWillAppear:(BOOL)animated {
-    
     data=[ReminderObject allObjects];
-    [[UINavigationBar appearance] setBackgroundImage: [UIImage new]
-                                       forBarMetrics: UIBarMetricsDefault];
     
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationBar.prefersLargeTitles = true;
+        self.navigationItem.largeTitleDisplayMode = true;
+        self.navigationController.navigationBar.largeTitleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    } else {
+        // Fallback on earlier versions
+    }
+
     [UINavigationBar appearance].shadowImage = [UIImage new];
-    
-    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00];
+//    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark; DEFAULT COLOR
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [self.addButton setTitle:nil];
-    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:FlatWhite]];
+    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:[UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]]];
     
     [self.clearButton setTitle:nil];
-    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:FlatWhite]];
+    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:[UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]]];
     
     self.navigationController.navigationBar.translucent = NO;
     
-    [self.totalMonthlyBill setTextColor:FlatNavyBlueDark];
+    [self.totalMonthlyBill setTextColor:FlatWhite];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00]];
     
     [self.tableView reloadData];
     
@@ -181,7 +189,7 @@
     NSString *totalString = [[NSString alloc] initWithFormat: @"Total Monthly Bill Cost $%@", sumString];
     _totalMonthlyBill.text = totalString;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00];
     //NSLog(@"OBJECTS IN LIST: %lu", (unsigned long)[data count]);
 }
 - (void)didReceiveMemoryWarning {
@@ -244,11 +252,15 @@
     [cell.priceLabel setText:formattedPrice];
     [cell.statusLabel setText:[NSString stringWithFormat:@"%ldd",(long)labs(diff)]];
     
+
+    cell.nameLabel.textColor   = FlatWhite;
+    cell.priceLabel.textColor  = FlatWhite;
+    cell.autoPayCheck.textColor = FlatWhite;
     
-    cell.nameLabel.textColor   = FlatNavyBlueDark;
-    cell.priceLabel.textColor  = FlatGray;
-    cell.autoPayCheck.textColor = FlatGray;
-    cell.backgroundColor = [UIColor whiteColor];
+//    cell.nameLabel.textColor   = FlatNavyBlueDark;
+//    cell.priceLabel.textColor  = FlatGray;
+//    cell.autoPayCheck.textColor = FlatGray;
+    cell.backgroundColor = [UIColor colorWithRed:0.19 green:0.19 blue:0.19 alpha:1.00];
     
     NSNumber *boolNumber = data[(NSUInteger) indexPath.row][@"autoPay"];
     bool autoPay = boolNumber.boolValue;
