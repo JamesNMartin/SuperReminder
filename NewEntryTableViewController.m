@@ -196,18 +196,25 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
     return [NSDictionary dictionaryWithDictionary:options];
 }
 
+-(NSString *) getReinderName {
+    return self.nameTextField.text;
+}
+-(NSDate *) getReminderDate {
+    NSDate *dueDate = _dueDatePicker.date;
+    NSTimeZone *tZone = [NSTimeZone defaultTimeZone];
+    NSDateFormatter *dFormat = [[NSDateFormatter alloc] init];
+    [dFormat setTimeZone:tZone];
+    [dFormat setDateFormat:@"MM/dd/yyyy"];
+    NSString *dueString = [dFormat stringFromDate:dueDate];
+    NSDate *dd = [dFormat dateFromString:dueString];
+
+    return dd;
+
+}
+
 - (IBAction)saveData:(id)sender {
     
     ReminderObject *reminder = [[ReminderObject alloc]init];
-    
-    
-    NSDate *dueDate = _dueDatePicker.date;
-    NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeZone:timeZone];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    NSString *dueString = [dateFormatter stringFromDate:dueDate];
-    NSDate *dd = [dateFormatter dateFromString:dueString];
     
     if ([self.nameTextField.text isEqual:@""]) {
         
@@ -223,9 +230,9 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
         
         NSString *priceStringToDouble = self.priceTextField.text;
         
-        reminder.name = self.nameTextField.text;
+        reminder.name = [self getReinderName];
         //reminder.price = [priceStringToDouble doubleValue];
-        reminder.dueDate = dd;
+        reminder.dueDate = [self getReminderDate];
         reminder.monthlyCheck = monthlyBOOL;
         reminder.autoPay = autoPayBOOL;
         

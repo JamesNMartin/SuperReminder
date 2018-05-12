@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b33591a9-117c-47df-acc4-9ebb24dbdd02" name="Default" comment="Defined UI colors as constants&#10;Updated UI elements&#10;Changed toggles for monthly &amp; auto pay to switches">
-      <change afterPath="$PROJECT_DIR$/SuperReminderWatch/Assets.xcassets/LaunchImage.launchimage/Contents.json" afterDir="false" />
+    <list default="true" id="b33591a9-117c-47df-acc4-9ebb24dbdd02" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewEntryTableViewController.h" beforeDir="false" afterPath="$PROJECT_DIR$/NewEntryTableViewController.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewEntryTableViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/NewEntryTableViewController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pods" beforeDir="false" afterPath="$PROJECT_DIR$/Pods" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealmDataTableViewCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/RealmDataTableViewCell.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealmDataTableViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/RealmDataTableViewController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SettingsTableViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/SettingsTableViewController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperReminder.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/SuperReminder.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperReminder.xcodeproj/xcuserdata/jamesnicholasmartin.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/SuperReminder.xcodeproj/xcuserdata/jamesnicholasmartin.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperReminder/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperReminder/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/SuperReminder/Base.lproj/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperReminder/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/SuperReminder/Info.plist" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,10 +38,20 @@
       <file leaf-file-name="NewEntryTableViewController.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NewEntryTableViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="239" column="9" lean-forward="true" selection-start-line="239" selection-start-column="9" selection-end-line="239" selection-end-column="9" />
+            <state relative-caret-position="371">
+              <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="225" selection-end-column="60" />
               <folding>
                 <element signature="e#157#196#0" expanded="true" />
+                <element signature="e#1113#1161#0" />
+                <element signature="e#1162#4193#0" />
+                <element signature="e#4194#4321#0" />
+                <element signature="e#4361#4445#0" />
+                <element signature="e#4447#4554#0" />
+                <element signature="e#4555#4889#0" />
+                <element signature="e#4890#7392#0" />
+                <element signature="e#7393#9999#0" />
+                <element signature="e#13743#14015#0" />
+                <element signature="e#14016#14305#0" />
               </folding>
             </state>
           </provider>
@@ -118,8 +117,8 @@
         <option value="$PROJECT_DIR$/Theme.m" />
         <option value="$PROJECT_DIR$/RealmDataTableViewCell.m" />
         <option value="$PROJECT_DIR$/NewEntryTableViewController.h" />
-        <option value="$PROJECT_DIR$/NewEntryTableViewController.m" />
         <option value="$PROJECT_DIR$/RealmDataTableViewController.m" />
+        <option value="$PROJECT_DIR$/NewEntryTableViewController.m" />
       </list>
     </option>
   </component>
@@ -237,12 +236,20 @@
       <workItem from="1523208903585" duration="351000" />
       <workItem from="1524890992329" duration="9762000" />
       <workItem from="1525817545363" duration="197000" />
-      <workItem from="1526023826605" duration="1024000" />
+      <workItem from="1526023826605" duration="2158000" />
     </task>
+    <task id="LOCAL-00001" summary="Defined UI colors as constants&#10;Updated UI elements&#10;Changed toggles for monthly &amp; auto pay to switches">
+      <created>1526098698988</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1526098698988</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26892000" />
+    <option name="totallyTimeSpent" value="28026000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -258,14 +265,14 @@
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6036961" visible="true" weight="0.15726767" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60413796" weight="0.15726767" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32551724" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.4177919" side_tool="true" weight="0.23201175" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.18068965" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49815693" visible="true" weight="0.32827586" />
-      <window_info id="Structure" order="1" sideWeight="0.3963039" side_tool="true" visible="true" weight="0.15726767" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.4177919" side_tool="true" weight="0.23172414" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18068965" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49815693" weight="0.32827586" />
+      <window_info id="Structure" order="1" sideWeight="0.39586207" side_tool="true" weight="0.15726767" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.5822081" weight="0.41517243" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="3" sideWeight="0.5059701" side_tool="true" weight="0.15745129" />
@@ -293,7 +300,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -314,6 +321,16 @@
           <caret line="171" column="82" selection-start-line="171" selection-start-column="79" selection-end-line="171" selection-end-column="102" />
           <folding>
             <element signature="e#157#196#0" expanded="true" />
+            <element signature="e#1113#1161#0" />
+            <element signature="e#1162#4193#0" />
+            <element signature="e#4194#4321#0" />
+            <element signature="e#4361#4445#0" />
+            <element signature="e#4447#4554#0" />
+            <element signature="e#4555#4889#0" />
+            <element signature="e#4890#7392#0" />
+            <element signature="e#7393#9999#0" />
+            <element signature="e#13743#14015#0" />
+            <element signature="e#14016#14305#0" />
           </folding>
         </state>
       </provider>
@@ -366,6 +383,16 @@
           <caret line="171" column="82" selection-start-line="171" selection-start-column="79" selection-end-line="171" selection-end-column="102" />
           <folding>
             <element signature="e#157#196#0" expanded="true" />
+            <element signature="e#1113#1161#0" />
+            <element signature="e#1162#4193#0" />
+            <element signature="e#4194#4321#0" />
+            <element signature="e#4361#4445#0" />
+            <element signature="e#4447#4554#0" />
+            <element signature="e#4555#4889#0" />
+            <element signature="e#4890#7392#0" />
+            <element signature="e#7393#9999#0" />
+            <element signature="e#13743#14015#0" />
+            <element signature="e#14016#14305#0" />
           </folding>
         </state>
       </provider>
@@ -418,6 +445,16 @@
           <caret line="235" column="49" selection-start-line="235" selection-start-column="49" selection-end-line="235" selection-end-column="49" />
           <folding>
             <element signature="e#157#196#0" expanded="true" />
+            <element signature="e#1113#1161#0" />
+            <element signature="e#1162#4193#0" />
+            <element signature="e#4194#4321#0" />
+            <element signature="e#4361#4445#0" />
+            <element signature="e#4447#4554#0" />
+            <element signature="e#4555#4889#0" />
+            <element signature="e#4890#7392#0" />
+            <element signature="e#7393#9999#0" />
+            <element signature="e#13743#14015#0" />
+            <element signature="e#14016#14305#0" />
           </folding>
         </state>
       </provider>
@@ -678,10 +715,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NewEntryTableViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="239" column="9" lean-forward="true" selection-start-line="239" selection-start-column="9" selection-end-line="239" selection-end-column="9" />
+        <state relative-caret-position="371">
+          <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="225" selection-end-column="60" />
           <folding>
             <element signature="e#157#196#0" expanded="true" />
+            <element signature="e#1113#1161#0" />
+            <element signature="e#1162#4193#0" />
+            <element signature="e#4194#4321#0" />
+            <element signature="e#4361#4445#0" />
+            <element signature="e#4447#4554#0" />
+            <element signature="e#4555#4889#0" />
+            <element signature="e#4890#7392#0" />
+            <element signature="e#7393#9999#0" />
+            <element signature="e#13743#14015#0" />
+            <element signature="e#14016#14305#0" />
           </folding>
         </state>
       </provider>
