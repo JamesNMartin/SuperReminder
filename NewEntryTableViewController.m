@@ -197,8 +197,20 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
 }
 
 -(NSString *) getReinderName {
+    if ([self.nameTextField.text isEqualToString:@""]) {
+
+        [CRToastManager showNotificationWithOptions:[self errorToast]
+                                     apperanceBlock:^(void) {
+                                         self.nameLabel.textColor = PURPLE_COLOR;
+                                     }
+                                    completionBlock:^(void) {
+                                        self.nameLabel.textColor = FlatWhite;
+                                    }];
+    }
+    
     return self.nameTextField.text;
 }
+
 -(NSDate *) getReminderDate {
     NSDate *dueDate = _dueDatePicker.date;
     NSTimeZone *tZone = [NSTimeZone defaultTimeZone];
@@ -210,6 +222,12 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
 
     return dd;
 
+}
+-(BOOL) getMonthlyBOOL {
+    return monthlyBOOL;
+}
+-(BOOL) getAutoPayBOOL {
+    return autoPayBOOL;
 }
 
 - (IBAction)saveData:(id)sender {
@@ -233,8 +251,8 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
         reminder.name = [self getReinderName];
         //reminder.price = [priceStringToDouble doubleValue];
         reminder.dueDate = [self getReminderDate];
-        reminder.monthlyCheck = monthlyBOOL;
-        reminder.autoPay = autoPayBOOL;
+        reminder.monthlyCheck = [self getMonthlyBOOL];
+        reminder.autoPay = [self getAutoPayBOOL];
         
         if (_taxSegemntControl.selectedSegmentIndex == 0) {
             double taxRate = 0.09;
