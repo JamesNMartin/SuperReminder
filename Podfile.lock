@@ -12,9 +12,9 @@ PODS:
   - KVNProgress (2.3.1)
   - LGAlertView (2.4.0)
   - MGSwipeTableCell (1.6.6)
-  - Realm (3.3.0):
-    - Realm/Headers (= 3.3.0)
-  - Realm/Headers (3.3.0)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
 
 DEPENDENCIES:
   - ChameleonFramework
@@ -40,7 +40,7 @@ SPEC CHECKSUMS:
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   LGAlertView: 2f5e83dd5cc2537de57d98727650609e86197d1a
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
-  Realm: 7d74ad6c5020432f58fe5e1df90bb6d97b2c7fef
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
 
 PODFILE CHECKSUM: d32a32dc2027eb0125a01f9746925c75e53df4b4
 

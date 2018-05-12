@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 //@property (strong, nonatomic) IBOutlet UITextField *contactNumberTextField;
 
+@property (weak, nonatomic) IBOutlet UISwitch *monthlySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *autoPaySwitch;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveData;
 - (IBAction)saveData:(id)sender;
@@ -44,7 +46,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
 
-- (IBAction)nameCheck:(id)sender;
+//- (IBAction)nameCheck:(id)sender;
 
 
 

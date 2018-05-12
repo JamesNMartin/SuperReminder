@@ -9,22 +9,29 @@
 #import "RealmDataTableViewController.h"
 #import "ReminderObject.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "SettingsTableViewController.h"
+//#import "SettingsTableViewController.h"
 #import <Chameleon.h>
 #import <CRToast.h>
 #import <IonIcons.h>
-#import <Realm.h>
-#import <KVNProgress/KVNProgress.h>
+//#import <Realm.h>
+//#import <KVNProgress/KVNProgress.h>
 #import "RealmDataTableViewCell.h"
-#import "NewEntryTableViewController.h"
-#import <DGActivityIndicatorView.h>
-#import <Crashlytics/Crashlytics.h>
+//#import "NewEntryTableViewController.h"
+//#import <DGActivityIndicatorView.h>
+//#import <Crashlytics/Crashlytics.h>
+
+#define DARK_GRAY_COLOR [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00]
+#define LIGHT_GRAY_COLOR [UIColor colorWithRed:0.19 green:0.19 blue:0.19 alpha:1.00]
+#define PURPLE_COLOR [UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]
+#define BRIGHT_PURPLE [UIColor colorWithRed:0.70 green:0.52 blue:1.00 alpha:1.00]
+#define DARK_PURPLE [UIColor colorWithRed:0.51 green:0.37 blue:0.72 alpha:1.00]
 
 @interface RealmDataTableViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
-    
+
     RLMResults *data;
     RealmDataTableViewCell *cell;
     RLMRealm *realm;
+//    Boolean *darkTheme;
 }
 
 @end
@@ -32,10 +39,16 @@
 @implementation RealmDataTableViewController
 
 - (void)viewDidLoad {
+//    NSString *testString = @"THIS IS A TEST";
+//    [self testMethod:testString];
     //THIS WILL PRINT THE REALM FILE URL
-    NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL);
+    //NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL);
+    
     [super viewDidLoad];
 }
+//-(void)testMethod: (NSString *)theTest {
+//    NSLog(theTest);
+//}
 - (IBAction)clearButton:(id)sender {
     
     //    FCAlertView *alert = [[FCAlertView alloc] init];
@@ -89,16 +102,47 @@
     //##############################################################################################################
 }
 
--(NSDictionary*)successToast {
+//-(NSDictionary*)successToast {
+//
+//    NSMutableDictionary *options = [@{
+//                                      kCRToastTextKey: @"Cleared",
+//                                      kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
+//                                      kCRToastTextColorKey: FlatWhite,
+//                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:FlatWhite],
+//                                      kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+//                                      kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
+//                                      kCRToastBackgroundColorKey : PURPLE_COLOR,
+//                                      kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
+//                                      kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
+//                                      kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
+//                                      kCRToastAnimationInTypeKey : @(CRToastAnimationTypeSpring),
+//                                      kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeSpring),
+//                                      kCRToastAnimationSpringDampingKey : @(0.5),
+//                                      kCRToastTimeIntervalKey: @(1.5),
+//                                      kCRToastInteractionRespondersKey: @(CRToastInteractionTypeTapOnce),
+//                                      kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
+//                                      kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)}mutableCopy];
+//    Boolean tappable = true;
+//
+//    if (tappable == true) {
+//        options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
+//                                                                                                      automaticallyDismiss:YES
+//                                                                                                                     block:^(CRToastInteractionType interactionType){
+//                                                                                                                         NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
+//                                                                                                                     }]];
+//    }
+//    return [NSDictionary dictionaryWithDictionary:options];
+//}
+-(NSDictionary*)paidToast {
     
     NSMutableDictionary *options = [@{
-                                      kCRToastTextKey: @"Cleared",
+                                      kCRToastTextKey: @"Bill Paid",
                                       kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
                                       kCRToastTextColorKey: FlatWhite,
                                       kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:FlatWhite],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : FlatNavyBlue,
+                                      kCRToastBackgroundColorKey : PURPLE_COLOR,
                                       kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
                                       kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
                                       kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
@@ -109,55 +153,23 @@
                                       kCRToastInteractionRespondersKey: @(CRToastInteractionTypeTapOnce),
                                       kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
                                       kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)}mutableCopy];
-    Boolean tappable = true;
-    
-    if (tappable == true) {
-        options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
-                                                                                                      automaticallyDismiss:YES
-                                                                                                                     block:^(CRToastInteractionType interactionType){
-                                                                                                                         NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
-                                                                                                                     }]];
-    }
-    return [NSDictionary dictionaryWithDictionary:options];
-}
--(NSDictionary*)paidToast {
-    
-    NSMutableDictionary *options = [@{
-                                      kCRToastTextKey: @"Bill Paid",
-                                      kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:18],
-                                      kCRToastTextColorKey: FlatWhite,
-                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_cash size:36.0 color:FlatWhite],
-                                      kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                      kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : FlatForestGreen,
-                                      kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
-                                      kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
-                                      kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
-                                      kCRToastAnimationInTypeKey : @(CRToastAnimationTypeSpring),
-                                      kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeSpring),
-                                      kCRToastAnimationSpringDampingKey : @(0.5),
-                                      kCRToastTimeIntervalKey: @(1.5),
-                                      kCRToastInteractionRespondersKey: @(CRToastInteractionTypeTapOnce),
-                                      kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
-                                      kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)}mutableCopy];
-    Boolean tappable = true;
-    
-    if (tappable == true) {
-        options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
-                                                                                                      automaticallyDismiss:YES
-                                                                                                                     block:^(CRToastInteractionType interactionType){
-                                                                                                                         NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
-                                                                                                                     }]];
-    }
+    //Boolean tappable = true;
+
+    options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
+                                                                                                  automaticallyDismiss:YES
+                                                                                                                 block:^(CRToastInteractionType interactionType){
+                                                                                                                     NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
+                                                                                                                 }]];
     return [NSDictionary dictionaryWithDictionary:options];
 }
 -(void)viewWillAppear:(BOOL)animated {
+
     data=[ReminderObject allObjects];
-    
+
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = true;
-        self.navigationItem.largeTitleDisplayMode = true;
-        self.navigationController.navigationBar.largeTitleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+        self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
+        self.navigationController.navigationBar.largeTitleTextAttributes = @{NSForegroundColorAttributeName: FlatWhite};
     } else {
         // Fallback on earlier versions
     }
@@ -170,15 +182,17 @@
 //    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [self.addButton setTitle:nil];
-    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:[UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]]];
+    [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:PURPLE_COLOR]];
     
     [self.clearButton setTitle:nil];
-    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:[UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]]];
+    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:PURPLE_COLOR]];
     
     self.navigationController.navigationBar.translucent = NO;
     
     [self.totalMonthlyBill setTextColor:FlatWhite];
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00]];
+    [self.tableView setSeparatorColor:DARK_GRAY_COLOR];
+
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: FlatWhite}];
     
     [self.tableView reloadData];
     
@@ -189,7 +203,7 @@
     NSString *totalString = [[NSString alloc] initWithFormat: @"Total Monthly Bill Cost $%@", sumString];
     _totalMonthlyBill.text = totalString;
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00];
+    self.view.backgroundColor = DARK_GRAY_COLOR;
     //NSLog(@"OBJECTS IN LIST: %lu", (unsigned long)[data count]);
 }
 - (void)didReceiveMemoryWarning {
@@ -250,7 +264,7 @@
     
     [cell.nameLabel setText:[NSString stringWithFormat:@"%@",data[(NSUInteger) indexPath.row][@"name"]]];
     [cell.priceLabel setText:formattedPrice];
-    [cell.statusLabel setText:[NSString stringWithFormat:@"%ldd",(long)labs(diff)]];
+    [cell.statusLabel setText:[NSString stringWithFormat:@"%ldd", labs(diff)]];
     
 
     cell.nameLabel.textColor   = FlatWhite;
@@ -260,7 +274,7 @@
 //    cell.nameLabel.textColor   = FlatNavyBlueDark;
 //    cell.priceLabel.textColor  = FlatGray;
 //    cell.autoPayCheck.textColor = FlatGray;
-    cell.backgroundColor = [UIColor colorWithRed:0.19 green:0.19 blue:0.19 alpha:1.00];
+    cell.backgroundColor = LIGHT_GRAY_COLOR;
     
     NSNumber *boolNumber = data[(NSUInteger) indexPath.row][@"autoPay"];
     bool autoPay = boolNumber.boolValue;
@@ -297,12 +311,12 @@
     //[self reoccur:selectedIndexPath];
     
     ReminderObject *newReminder = [[ReminderObject alloc]init];
-    
-    NSString *newName = data[indexPath.row][@"name"];
-    double newPrice = [data[indexPath.row][@"price"]doubleValue];
-    NSDate *oldDate = data[indexPath.row][@"dueDate"];
-    NSNumber *mb = data[indexPath.row][@"monthlyCheck"];
-    NSNumber *ab = data[indexPath.row][@"autoPay"];
+
+    NSString *newName = data[(NSUInteger) indexPath.row][@"name"];
+    double newPrice = [data[(NSUInteger) indexPath.row][@"price"]doubleValue];
+    NSDate *oldDate = data[(NSUInteger) indexPath.row][@"dueDate"];
+    NSNumber *mb = data[(NSUInteger) indexPath.row][@"monthlyCheck"];
+    NSNumber *ab = data[(NSUInteger) indexPath.row][@"autoPay"];
     
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     [dateComponents setMonth:1];
@@ -329,10 +343,10 @@
                                     bool mBOOL;
                                     bool aBOOL;
                                     [[RLMRealm defaultRealm] beginWriteTransaction];
-                                    [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+                                    [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:(NSUInteger) indexPath.row]];
                                     [[RLMRealm defaultRealm] commitWriteTransaction];
-                                    
-                                    [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+
+                                    [tableView deleteRowsAtIndexPaths:[@[indexPath] mutableCopy] withRowAnimation:UITableViewRowAnimationRight];
                                     [tableView setEditing:NO animated:YES];
                                     [self.tableView reloadData];
                                     
@@ -358,22 +372,22 @@
                                     style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action) {
                                         [[RLMRealm defaultRealm] beginWriteTransaction];
-                                        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+                                        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:(NSUInteger) indexPath.row]];
                                         [[RLMRealm defaultRealm] commitWriteTransaction];
                                         data=[ReminderObject allObjects];
-                                        
-                                        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+
+                                        [tableView deleteRowsAtIndexPaths:[@[indexPath] mutableCopy] withRowAnimation:UITableViewRowAnimationRight];
                                         [tableView setEditing:NO animated:YES];
                                         [self.tableView reloadData];
                                         [self updateTotalMonthPrice];
                                         //HANDLE DONT ADD
                                     }];
-        UIAlertAction* hideForever = [UIAlertAction
-                                      actionWithTitle:@"Don't Show This Again"
-                                      style:UIAlertActionStyleDefault
-                                      handler:^(UIAlertAction * action) {
-                                          //HANDLE DONT SHOW AGAIN
-                                      }];
+//        UIAlertAction* hideForever = [UIAlertAction
+//                                      actionWithTitle:@"Don't Show This Again"
+//                                      style:UIAlertActionStyleDefault
+//                                      handler:^(UIAlertAction * action) {
+//                                          //HANDLE DONT SHOW AGAIN
+//                                      }];
         UIAlertAction* editButton = [UIAlertAction
                                      actionWithTitle:@"Edit"
                                      style:UIAlertActionStyleDefault
@@ -387,6 +401,9 @@
                                  handler:^(UIAlertAction * action) {
                                      //HANDLE CANCEL
                                  }];
+
+        al.view.tintColor = PURPLE_COLOR;
+
         [al addAction:readd];
         [al addAction:dontReadd];
         [al addAction:editButton];
@@ -396,11 +413,11 @@
         
     } else {
         [[RLMRealm defaultRealm] beginWriteTransaction];
-        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:indexPath.row]];
+        [[RLMRealm defaultRealm] deleteObject:[data objectAtIndex:(NSUInteger) indexPath.row]];
         [[RLMRealm defaultRealm] commitWriteTransaction];
         data=[ReminderObject allObjects];
-        
-        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+
+        [tableView deleteRowsAtIndexPaths:[@[indexPath] mutableCopy] withRowAnimation:UITableViewRowAnimationRight];
         [tableView setEditing:NO animated:YES];
         
         [CRToastManager showNotificationWithOptions:[self paidToast]
@@ -417,6 +434,7 @@
     [self.tableView reloadData];
     [self updateTotalMonthPrice];
 };
+
 //}
 //-(void)reoccur:(NSIndexPath *)indexPath {
 //
@@ -470,4 +488,5 @@
     //    [self presentViewController:iVC animated:YES completion:nil];
     //}
 }
+
 @end

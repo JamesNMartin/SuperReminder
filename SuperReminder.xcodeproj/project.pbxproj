@@ -14,7 +14,6 @@
 		AC2852E61E4C388000B228C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2852E51E4C388000B228C8 /* main.m */; };
 		AC2852E91E4C388000B228C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2852E81E4C388000B228C8 /* AppDelegate.m */; };
 		AC2852EF1E4C388000B228C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2852ED1E4C388000B228C8 /* Main.storyboard */; };
-		AC2852F11E4C388000B228C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2852F01E4C388000B228C8 /* Assets.xcassets */; };
 		AC2852F41E4C388000B228C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2852F21E4C388000B228C8 /* LaunchScreen.storyboard */; };
 		AC2852FF1E4C388000B228C8 /* SuperReminderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2852FE1E4C388000B228C8 /* SuperReminderTests.m */; };
 		AC28530A1E4C388000B228C8 /* SuperReminderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2853091E4C388000B228C8 /* SuperReminderUITests.m */; };
@@ -106,7 +105,6 @@
 		AC2852E71E4C388000B228C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC2852E81E4C388000B228C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AC2852EE1E4C388000B228C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AC2852F01E4C388000B228C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC2852F31E4C388000B228C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC2852F51E4C388000B228C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC2852FA1E4C388000B228C8 /* SuperReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,7 +230,6 @@
 			children = (
 				AC2852E71E4C388000B228C8 /* AppDelegate.h */,
 				AC2852E81E4C388000B228C8 /* AppDelegate.m */,
-				AC2852F01E4C388000B228C8 /* Assets.xcassets */,
 				AC2852F21E4C388000B228C8 /* LaunchScreen.storyboard */,
 				AC2852F51E4C388000B228C8 /* Info.plist */,
 				AC2852E41E4C388000B228C8 /* Supporting Files */,
@@ -525,7 +522,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC2852F41E4C388000B228C8 /* LaunchScreen.storyboard in Resources */,
-				AC2852F11E4C388000B228C8 /* Assets.xcassets in Resources */,
 				AC1E3FC91E4D9EF6006FB0AE /* bignoodletoo.ttf in Resources */,
 				AC1E3FC61E4D9BEB006FB0AE /* NOTES in Resources */,
 				AC1E3FCA1E4D9EF6006FB0AE /* koverwatch.ttf in Resources */,

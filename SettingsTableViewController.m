@@ -11,6 +11,10 @@
 #import <IonIcons.h>
 #import "RealmSettings.h"
 
+#define DARK_GRAY_COLOR [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00]
+#define LIGHT_GRAY_COLOR [UIColor colorWithRed:0.19 green:0.19 blue:0.19 alpha:1.00]
+#define PURPLE_COLOR [UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]
+
 @interface SettingsTableViewController ()
 
 @end
@@ -34,16 +38,18 @@
     
     [super viewWillAppear:YES]; // This line is needed for the 'auto slide up'
     //self.saveButton.enabled = FALSE;
-    self.navigationController.navigationBar.tintColor = FlatWhite;
+    self.navigationController.navigationBar.tintColor = PURPLE_COLOR;
     
-    [self.closeButton setTitle:nil];
-    [self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:30.0f color:FlatWhite]];
+//    [self.closeButton setTitle:nil];
+//    [self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:30.0f color:FlatWhite]];
     
     //[self.saveButton setTitle:nil];
     //[self.saveButton setImage:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:32.0f color:FlatWhite]];
     
-    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark;
+    self.navigationController.navigationBar.barTintColor = DARK_GRAY_COLOR;
     self.navigationController.navigationBar.translucent = NO;
+    
+     self.view.backgroundColor = DARK_GRAY_COLOR;
 }
 - (IBAction)closeButton:(id)sender {
     
@@ -63,7 +69,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
     return 2;
 }
 -(IBAction)lightThemeSelected:(id)sender {
@@ -72,15 +77,6 @@
 -(IBAction)darkThemeSelected:(id)sender {
     
 }
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.

@@ -11,11 +11,22 @@
 #import "ReminderObject.h"
 #import <CRToast.h>
 #import <IonIcons.h>
-#import <KVNProgress/KVNProgress.h>
+//#import <KVNProgress/KVNProgress.h>
 #import <Chameleon.h>
 //#import <IQKeyboardManager.h>
 //#import <IQUIView+IQKeyboardToolbar.h>
 //#import <IQUITextFieldView+Additions.h>
+
+#define DARK_GRAY_COLOR [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00]
+#define LIGHT_GRAY_COLOR [UIColor colorWithRed:0.19 green:0.19 blue:0.19 alpha:1.00]
+#define PURPLE_COLOR [UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00]
+
+static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        block();
+    });
+}
 
 @interface NewEntryTableViewController ()<UIPopoverPresentationControllerDelegate>
 
@@ -34,33 +45,64 @@
     //[super viewWillAppear:YES]; // This line is needed for the 'auto slide up'
     //self.saveButton.enabled = FALSE;
     self.navigationController.navigationBar.tintColor = FlatWhite;
+    self.view.backgroundColor = DARK_GRAY_COLOR;
+    [self.tableView setSeparatorColor:DARK_GRAY_COLOR];
 
-    [self.closeButton setTitle:nil];
+    [self.closeButton setTitle:@"Close"];
+    [self.closeButton setTitleTextAttributes:@{
+                                              NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:17.0f],
+                                              NSForegroundColorAttributeName: PURPLE_COLOR
+                                              } forState:UIControlStateNormal];
     //OG icon size 30
-    [self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:38.0f color:FlatWhite]];
+    //[self.closeButton setImage:[IonIcons imageWithIcon:ion_ios_close_empty size:38.0f color:FlatWhite]];
 
-    [self.saveButton setTitle:nil];
+    [self.saveButton setTitleTextAttributes:@{
+            NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:17.0f],
+            NSForegroundColorAttributeName: PURPLE_COLOR
+    } forState:UIControlStateNormal];
+    [self.saveButton setTitle:@"Create"];
     //OG icon size 32
-    [self.saveButton setImage:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:40.0f color:FlatWhite]];
+    //[self.saveButton setImage:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:40.0f color:FlatWhite]];
 
+
+    
     monthlyBOOL = false;
 
-    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark;
+    self.navigationController.navigationBar.barTintColor = DARK_GRAY_COLOR;
     self.navigationController.navigationBar.translucent = NO;
 
     _customTaxLabel.enabled = false; // THIS IS TO ENABLE LATER SO WE CAN HAVE A TOGGLE FOR CUSTOM
     _customTaxTextField.enabled = false; // SAME AS ABOVE
     
     //COLORS ###########################################################################################################
-    _nameLabel.textColor = FlatNavyBlueDark;
-    _priceLabel.textColor = FlatNavyBlueDark;
-    _monthlyLabel.textColor = FlatNavyBlueDark;
-    _autoPayLabel.textColor = FlatNavyBlueDark;
-    _monthlyLabel.textColor = FlatNavyBlueDark;
-    _contactLabel.textColor = FlatNavyBlueDark;
-    _dueLabel.textColor = FlatNavyBlueDark;
-    _customTaxLabel.textColor = FlatNavyBlue;
-    _taxSegemntControl.tintColor = FlatNavyBlueDark;
+    _nameLabel.textColor = FlatWhite;
+    _priceLabel.textColor = FlatWhite;
+    _monthlyLabel.textColor = FlatWhite;
+    _autoPayLabel.textColor = FlatWhite;
+    _monthlyLabel.textColor = FlatWhite;
+    _contactLabel.textColor = FlatWhite;
+    _dueLabel.textColor = FlatWhite;
+    _customTaxLabel.textColor = FlatWhite;
+    _taxSegemntControl.tintColor = PURPLE_COLOR;
+    _dueDatePicker.tintColor = FlatWhite;
+    [_dueDatePicker setValue:[UIColor whiteColor] forKey:[NSString stringWithFormat:@"textColor"]];
+
+
+    [_nameTextField setTintColor:PURPLE_COLOR];
+    [_nameTextField setValue:FlatWhiteDark forKeyPath:[NSString stringWithFormat:@"placeholderLabel.textColor"]];
+    _nameTextField.textColor = FlatWhite;
+    
+    
+    [_priceTextField setTintColor:PURPLE_COLOR];
+    [_priceTextField setValue:FlatWhiteDark forKeyPath:[NSString stringWithFormat:@"placeholderLabel.textColor"]];
+    _priceTextField.textColor = FlatWhite;
+
+    _monthlySwitch.onTintColor = PURPLE_COLOR;
+    _monthlySwitch.tintColor = PURPLE_COLOR;
+
+    _autoPaySwitch.onTintColor = PURPLE_COLOR;
+    _autoPaySwitch.tintColor = PURPLE_COLOR;
+
     //##################################################################################################################
     
     dispatch_main_after(0.5f, ^{
@@ -85,7 +127,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    //cell.backgroundColor = [UIColor colorWithRed:0.74 green:0.75 blue:0.74 alpha:1.00];
+    cell.backgroundColor = LIGHT_GRAY_COLOR;
+    [[UITableViewCell appearance] setTintColor:PURPLE_COLOR];
+    
     return cell;
     
 }
@@ -97,7 +141,7 @@
                               kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue-LightItalic" size:17],
                               kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_help_outline size:36.0 color:[UIColor whiteColor]],
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : FlatRedDark,
+                              kCRToastBackgroundColorKey : PURPLE_COLOR,
                               kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
                               kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
                               kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
@@ -108,29 +152,27 @@
                               kCRToastInteractionRespondersKey: @(CRToastInteractionTypeTapOnce),
                               kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
                               kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)}mutableCopy];
-    Boolean tappable = true;
-    
-    if (tappable == true) {
-        options[kCRToastInteractionRespondersKey] = @[
-                [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
-                                                                                                      automaticallyDismiss:YES
-                                                                               block:^(CRToastInteractionType interactionType){
-                                                                                   NSLog(@"Dismissed with %@ interaction",
-                                                                                           NSStringFromCRToastInteractionType
-                                                                                                   (interactionType));
-                                                                                                                     }]];
-    }
+//    Boolean tappable = true;
+
+    options[kCRToastInteractionRespondersKey] = @[
+            [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
+                                                                                                  automaticallyDismiss:YES
+                                                                           block:^(CRToastInteractionType interactionType){
+                                                                               NSLog(@"Dismissed with %@ interaction",
+                                                                                       NSStringFromCRToastInteractionType
+                                                                                               (interactionType));
+                                                                                                                 }]];
     return [NSDictionary dictionaryWithDictionary:options];
 }
 -(NSDictionary*)successToast {
     
     NSMutableDictionary *options = [@{
-                                      kCRToastTextKey: @"Bill Reminder Added",
+                                      kCRToastTextKey: @"Reminder Added",
                                       kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
                                       kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:[UIColor whiteColor]],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : FlatNavyBlue,
+                                      kCRToastBackgroundColorKey : PURPLE_COLOR,
                                       kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
                                       kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
                                       kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
@@ -141,21 +183,18 @@
                                       kCRToastInteractionRespondersKey: @(CRToastInteractionTypeTapOnce),
                                       kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
                                       kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)}mutableCopy];
-    Boolean tappable = true;
-    
-    if (tappable == true) {
-        options[kCRToastInteractionRespondersKey] = @[
-                [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
-                                                                                                      automaticallyDismiss:YES
-                                                                               block:^(CRToastInteractionType interactionType){
-                                                                                   NSLog(@"Dismissed with %@ interaction",
-                                                                                           NSStringFromCRToastInteractionType
-                                                                                                   (interactionType));
-                                                                                                                     }]];
-    }
+//    Boolean tappable = true;
+
+    options[kCRToastInteractionRespondersKey] = @[
+            [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
+                                                                                                  automaticallyDismiss:YES
+                                                                           block:^(CRToastInteractionType interactionType){
+                                                                               NSLog(@"Dismissed with %@ interaction",
+                                                                                       NSStringFromCRToastInteractionType
+                                                                                               (interactionType));
+                                                                                                                 }]];
     return [NSDictionary dictionaryWithDictionary:options];
 }
-
 
 - (IBAction)saveData:(id)sender {
     
@@ -175,10 +214,10 @@
         
         [CRToastManager showNotificationWithOptions:[self errorToast]
                                      apperanceBlock:^(void) {
-                                         self.nameLabel.textColor = FlatRedDark;
+                                         self.nameLabel.textColor = PURPLE_COLOR;
                                      }
                                     completionBlock:^(void) {
-                                        self.nameLabel.textColor = [UIColor blackColor];
+                                        self.nameLabel.textColor = FlatWhite;
                                     }];
     } else {
         
@@ -230,27 +269,27 @@
 - (IBAction)monthlyTapped:(id)sender {
     if (!monthlyBOOL) {
         monthlyBOOL = true;
-        _monthlyCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        _monthlyCell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         monthlyBOOL = false;
-        _monthlyCell.accessoryType = UITableViewCellAccessoryNone;
+//        _monthlyCell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
 - (IBAction)autoPayTapped:(id)sender {
     if (!autoPayBOOL) {
         autoPayBOOL = true;
-        _autoPayCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        _autoPayCell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         autoPayBOOL = false;
-        _autoPayCell.accessoryType = UITableViewCellAccessoryNone;
+//        _autoPayCell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
-- (IBAction)nameCheck:(id)sender {
-    while(_nameTextField.text != NULL) {
-        _saveButton.enabled = TRUE;
-        break;
-    }
-}
+//- (IBAction)nameCheck:(id)sender {
+//    while(_nameTextField.text != NULL) {
+//        _saveButton.enabled = TRUE;
+//        break;
+//    }
+//}
 -(void)addToRealm:(ReminderObject *)re {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
@@ -277,11 +316,5 @@
         _customTaxLabel.enabled = false;
         _customTaxTextField.enabled = false;
     }
-}
-static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
-{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        block();
-    });
 }
 @end
