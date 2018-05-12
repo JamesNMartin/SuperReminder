@@ -207,7 +207,7 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
                                         self.nameLabel.textColor = FlatWhite;
                                     }];
     }
-    
+
     return self.nameTextField.text;
 }
 
