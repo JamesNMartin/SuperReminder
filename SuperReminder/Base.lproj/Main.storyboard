@@ -101,7 +101,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="WAO-F3-gum">
                             <connections>
-                                <action selector="clearButton:" destination="mLh-dd-4dB" id="ddS-8T-9tI"/>
+                                <action selector="sortingOptionsButton:" destination="mLh-dd-4dB" id="ddS-8T-9tI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -367,7 +367,7 @@
                         <outlet property="priceTextField" destination="Q5d-YF-cxD" id="7A3-Rs-sB2"/>
                         <outlet property="saveButton" destination="Xzt-3r-gQs" id="exZ-0J-MmC"/>
                         <outlet property="saveData" destination="Xzt-3r-gQs" id="1DT-tU-DCi"/>
-                        <outlet property="taxSegemntControl" destination="mt4-B8-rWA" id="z0f-2s-5Rh"/>
+                        <outlet property="taxSegmentControl" destination="mt4-B8-rWA" id="z0f-2s-5Rh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srn-rg-Mya" userLabel="First Responder" sceneMemberID="firstResponder"/>

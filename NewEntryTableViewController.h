@@ -19,7 +19,7 @@
 @property (weak, nonatomic)   IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic)   IBOutlet UIDatePicker *dueDatePicker;
 @property (weak, nonatomic)   IBOutlet UITextField *priceTextField;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *taxSegemntControl;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *taxSegmentControl;
 - (IBAction)taxSegmentControl:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *customTaxTextField;
 @property (strong, nonatomic) IBOutlet UILabel *customTaxLabel;
@@ -35,12 +35,12 @@
 - (IBAction)closeButton:(id)sender;
 
 
-@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *monthlyTapped;
+//@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *monthlyTapped;
 - (IBAction)monthlyTapped:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableViewCell *monthlyCell;
 
 
-@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *autoPayTapped;
+//@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *autoPayTapped;
 - (IBAction)autoPayTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableViewCell *autoPayCell;
 

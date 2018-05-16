@@ -31,7 +31,7 @@
     RLMResults *data;
     RealmDataTableViewCell *cell;
     RLMRealm *realm;
-//    Boolean *darkTheme;
+    NSDate *todaysDate;
 }
 
 @end
@@ -39,6 +39,7 @@
 @implementation RealmDataTableViewController
 
 - (void)viewDidLoad {
+    NSLog([self getTodaysDate]);
 //    NSString *testString = @"THIS IS A TEST";
 //    [self testMethod:testString];
     //THIS WILL PRINT THE REALM FILE URL
@@ -49,42 +50,53 @@
 //-(void)testMethod: (NSString *)theTest {
 //    NSLog(theTest);
 //}
-- (IBAction)clearButton:(id)sender {
-    
-    //    FCAlertView *alert = [[FCAlertView alloc] init];
-    //    
-    //    alert.blurBackground = YES;
-    //    alert.detachButtons = YES;
-    //    alert.hideSeparatorLineView = NO;
-    //    alert.bounceAnimations = YES;
-    //    alert.animateAlertInFromTop = YES;
-    //    alert.dismissOnOutsideTouch = YES;
-    //    
-    //    alert.titleColor = FlatNavyBlueDark;
-    //    alert.firstButtonTitleColor = [UIColor whiteColor];
-    //    alert.secondButtonTitleColor = [UIColor whiteColor];
-    //    alert.doneButtonTitleColor = FlatNavyBlueDark;
-    //    
-    //    alert.firstButtonBackgroundColor = FlatNavyBlueDark;
-    //    alert.secondButtonBackgroundColor = FlatNavyBlueDark;
-    //    
-    //    alert.tintColor = FlatNavyBlueDark;
-    //    
-    //    [alert addButton:@"Continue" withActionBlock:^{
-    //        // Put your action here
-    //    }];
-    //    [alert addButton:@"Remove" withActionBlock:^{
-    //        // Put your action here
-    //    }];
-    //    [alert showAlertWithTitle:@"AT&T - $164.45"
-    //                 withSubtitle:@"If this bill is monthly reoccuring and will be created for the next month automatically."
-    //              withCustomImage:nil
-    //          withDoneButtonTitle:@"Cancel"
-    //                   andButtons:nil];
-    
-    UINavigationController *sVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
-    [self presentViewController:sVC animated:YES completion:nil];
-    
+-(NSString *)getTodaysDate {
+
+    NSDate *theDate = [[NSDate alloc]init];
+    NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+    NSDateFormatter *todaysDateFormatter = [[NSDateFormatter alloc]init];
+    [todaysDateFormatter setTimeZone:timeZone];
+    [todaysDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *localDateString = [todaysDateFormatter stringFromDate:theDate];
+
+    return localDateString;
+
+}
+- (IBAction)sortingOptionsButton:(id)sender {
+
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Select Sorting Order" message:@"Sort by..." preferredStyle:UIAlertControllerStyleActionSheet];
+    actionSheet.view.tintColor = PURPLE_COLOR;
+
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        //TODO Add action for cancel button
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Name" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //TODO Add action for name order
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Price" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //TODO Add action for price order
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Due Date" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //TODO Add action for due date order
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+
+    // Present action sheet.
+    [self presentViewController:actionSheet animated:YES completion:nil];
+
+//    UINavigationController *sVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
+//    [self presentViewController:sVC animated:YES completion:nil];
+
     //UNCOMMENT TO RE-ADD THE MASS DELETE REALM DATA FILE
     //##############################################################################################################
     //    realm = [RLMRealm defaultRealm];
@@ -102,44 +114,16 @@
     //##############################################################################################################
 }
 
-//-(NSDictionary*)successToast {
-//
-//    NSMutableDictionary *options = [@{
-//                                      kCRToastTextKey: @"Cleared",
-//                                      kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
-//                                      kCRToastTextColorKey: FlatWhite,
-//                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:FlatWhite],
-//                                      kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-//                                      kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
-//                                      kCRToastBackgroundColorKey : PURPLE_COLOR,
-//                                      kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
-//                                      kCRToastNotificationPresentationTypeKey:@(CRToastPresentationTypePush),
-//                                      kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
-//                                      kCRToastAnimationInTypeKey : @(CRToastAnimationTypeSpring),
-//                                      kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeSpring),
-//                                      kCRToastAnimationSpringDampingKey : @(0.5),
-//                                      kCRToastTimeIntervalKey: @(1.5),
-//                                      kCRToastInteractionRespondersKey: @(CRToastInteractionTypeTapOnce),
-//                                      kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
-//                                      kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)}mutableCopy];
-//    Boolean tappable = true;
-//
-//    if (tappable == true) {
-//        options[kCRToastInteractionRespondersKey] = @[[CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap
-//                                                                                                      automaticallyDismiss:YES
-//                                                                                                                     block:^(CRToastInteractionType interactionType){
-//                                                                                                                         NSLog(@"Dismissed with %@ interaction", NSStringFromCRToastInteractionType(interactionType));
-//                                                                                                                     }]];
-//    }
-//    return [NSDictionary dictionaryWithDictionary:options];
-//}
--(NSDictionary*)paidToast {
-    
+-(NSDictionary*)paidToast: (NSString *)theBillName {
+
+    NSString *toastText = [theBillName stringByAppendingString:@" Bill Paid"];
+
+
     NSMutableDictionary *options = [@{
-                                      kCRToastTextKey: @"Bill Paid",
+                                      kCRToastTextKey: toastText,
                                       kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
                                       kCRToastTextColorKey: FlatWhite,
-                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:FlatWhite],
+                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:22.0 color:FlatWhite],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
                                       kCRToastBackgroundColorKey : PURPLE_COLOR,
@@ -173,27 +157,18 @@
     } else {
         // Fallback on earlier versions
     }
-
     [UINavigationBar appearance].shadowImage = [UIImage new];
 
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.59 green:0.38 blue:0.91 alpha:1.00];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00];
-//    self.navigationController.navigationBar.barTintColor = FlatNavyBlueDark; DEFAULT COLOR
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
     [self.addButton setTitle:nil];
     [self.addButton setImage:[IonIcons imageWithIcon:ion_ios_compose_outline size:30.0f color:PURPLE_COLOR]];
-    
     [self.clearButton setTitle:nil];
-    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_gear_outline size:30.0f color:PURPLE_COLOR]];
-    
+    [self.clearButton setImage:[IonIcons imageWithIcon:ion_ios_cog_outline size:30.0f color:PURPLE_COLOR]];
     self.navigationController.navigationBar.translucent = NO;
-    
     [self.totalMonthlyBill setTextColor:FlatWhite];
     [self.tableView setSeparatorColor:DARK_GRAY_COLOR];
-
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: FlatWhite}];
-    
     [self.tableView reloadData];
     
     NSNumber *sum = [data sumOfProperty:@"price"];
@@ -228,11 +203,6 @@
         cell = [[RealmDataTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    
-    /*cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:36.0f color:FlatWhite] backgroundColor:FlatGreen],
-     [MGSwipeButton buttonWithTitle:@"" icon:[IonIcons imageWithIcon:ion_ios_close_empty size:30.0f color:FlatWhite] backgroundColor:FlatRed]];
-     cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;*/
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     NSDate *dueDate = data[(NSUInteger) indexPath.row][@"dueDate"];
@@ -251,29 +221,23 @@
                                                          options:0];
     NSInteger diff = [components day];
     //NSLog(@"DUE DATE: %@", dueDate);
-    //NSLog(@"TODAYS DATE: %@", td);
+    //NSLog(@"TODAY'S DATE: %@", td);
     //NSLog(@"DIFFERENCE IN DATE FROM TODAY: %ld", labs(diff));
-    
     
     NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
     //[decimalStyleFormatter setNumberStyle:@"##.##"];
     [decimalStyleFormatter setMaximumFractionDigits:2];
     
     NSString *priceString = [decimalStyleFormatter stringFromNumber:data[(NSUInteger) indexPath.row][@"price"]];
-    NSString *formattedPrice = [[[NSString alloc] initWithFormat: @"$%@ - ", priceString] stringByAppendingString: dueString];
+    NSString *formattedPrice = [[[NSString alloc] initWithFormat: @"$%@ • ", priceString] stringByAppendingString: dueString];
     
     [cell.nameLabel setText:[NSString stringWithFormat:@"%@",data[(NSUInteger) indexPath.row][@"name"]]];
     [cell.priceLabel setText:formattedPrice];
     [cell.statusLabel setText:[NSString stringWithFormat:@"%ldd", labs(diff)]];
-    
 
-    cell.nameLabel.textColor   = FlatWhite;
+    cell.nameLabel.textColor   = PURPLE_COLOR;
     cell.priceLabel.textColor  = FlatWhite;
     cell.autoPayCheck.textColor = FlatWhite;
-    
-//    cell.nameLabel.textColor   = FlatNavyBlueDark;
-//    cell.priceLabel.textColor  = FlatGray;
-//    cell.autoPayCheck.textColor = FlatGray;
     cell.backgroundColor = LIGHT_GRAY_COLOR;
     
     NSNumber *boolNumber = data[(NSUInteger) indexPath.row][@"autoPay"];
@@ -298,7 +262,7 @@
         cell.statusLabel.textColor = FlatYellowDark;
     }
     if ((diff) >= 7) {
-        cell.statusLabel.textColor = FlatGreenDark;
+        cell.statusLabel.textColor = PURPLE_COLOR;
     }
     return cell;
 }
@@ -326,7 +290,7 @@
     NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
     [decimalStyleFormatter setMaximumFractionDigits:2];
     NSString *p = [decimalStyleFormatter stringFromNumber:data[(NSUInteger) indexPath.row][@"price"]];
-    NSString *alertTitle = [[[NSString alloc] initWithFormat: @"%@ - $", newName] stringByAppendingString: p];
+    NSString *alertTitle = [[[NSString alloc] initWithFormat: @"%@ • $", newName] stringByAppendingString: p];
     
     if (mb.boolValue == 1) {
         
@@ -382,19 +346,12 @@
                                         [self updateTotalMonthPrice];
                                         //HANDLE DONT ADD
                                     }];
-//        UIAlertAction* hideForever = [UIAlertAction
-//                                      actionWithTitle:@"Don't Show This Again"
-//                                      style:UIAlertActionStyleDefault
-//                                      handler:^(UIAlertAction * action) {
-//                                          //HANDLE DONT SHOW AGAIN
-//                                      }];
         UIAlertAction* editButton = [UIAlertAction
                                      actionWithTitle:@"Edit"
                                      style:UIAlertActionStyleDefault
                                      handler:^(UIAlertAction * action) {
                                          //HANDLE EDIT
                                      }];
-        
         UIAlertAction* cancel = [UIAlertAction
                                  actionWithTitle:@"Cancel"
                                  style:UIAlertActionStyleCancel
@@ -403,11 +360,9 @@
                                  }];
 
         al.view.tintColor = PURPLE_COLOR;
-
         [al addAction:readd];
         [al addAction:dontReadd];
         [al addAction:editButton];
-        //[al addAction:hideForever];
         [al addAction:cancel];
         [self presentViewController:al animated:YES completion:nil];
         
@@ -420,38 +375,19 @@
         [tableView deleteRowsAtIndexPaths:[@[indexPath] mutableCopy] withRowAnimation:UITableViewRowAnimationRight];
         [tableView setEditing:NO animated:YES];
         
-        [CRToastManager showNotificationWithOptions:[self paidToast]
+        [CRToastManager showNotificationWithOptions:[self paidToast:newName]
                                      apperanceBlock:^(void) {
                                          //CAN DO SOME ACTION HERE
                                      }
                                     completionBlock:^(void) {
                                         //WHEN IT DISMISSES CALL SOMETHING ID NEEDED
                                     }];
-        
-        
         [self.tableView reloadData];
     }
     [self.tableView reloadData];
     [self updateTotalMonthPrice];
 };
-
-//}
-//-(void)reoccur:(NSIndexPath *)indexPath {
-//
-//    ReminderObject *newReminder = [[ReminderObject alloc]init];
-//
-//    NSString *newName = data[indexPath.row][@"name"];
-//    double newPrice = [data[indexPath.row][@"price"]doubleValue];
-//    NSDate *oldDate = data[indexPath.row][@"dueDate"];
-//    NSNumber *mb = data[indexPath.row][@"monthlyCheck"];
-//
-//    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-//    [dateComponents setMonth:1];
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:oldDate options:0];
-//}
 -(void)updateTotalMonthPrice {
-    
     NSNumber *sum = [data sumOfProperty:@"price"];
     NSNumberFormatter *decimalStyleFormatter = [[NSNumberFormatter alloc] init];
     [decimalStyleFormatter setMaximumFractionDigits:2];
@@ -459,7 +395,6 @@
     NSString *totalString = [[NSString alloc] initWithFormat: @"Total Monthly Bill Cost $%@", sumString];
     _totalMonthlyBill.text = totalString;
 }
-
 -(void)addToRealm:(ReminderObject *)re {
     realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
@@ -479,14 +414,10 @@
 //    });
 //}
 - (IBAction)addButton:(id)sender {
-    //if(_billTypeSelector.selectedSegmentIndex == 0) {
-    
     UINavigationController *bVC = [self.storyboard instantiateViewControllerWithIdentifier:@"billViewController"];
     [self presentViewController:bVC animated:YES completion:nil];
-    //} else {
     //    UINavigationController *iVC = [self.storyboard instantiateViewControllerWithIdentifier:@"iouViewController"];
     //    [self presentViewController:iVC animated:YES completion:nil];
-    //}
 }
 
 @end

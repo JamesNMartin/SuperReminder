@@ -83,7 +83,7 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
     _contactLabel.textColor = FlatWhite;
     _dueLabel.textColor = FlatWhite;
     _customTaxLabel.textColor = FlatWhite;
-    _taxSegemntControl.tintColor = PURPLE_COLOR;
+    _taxSegmentControl.tintColor = PURPLE_COLOR;
     _dueDatePicker.tintColor = FlatWhite;
     [_dueDatePicker setValue:[UIColor whiteColor] forKey:[NSString stringWithFormat:@"textColor"]];
 
@@ -133,10 +133,15 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
     return cell;
     
 }
--(NSDictionary*)errorToast {
+-(NSDictionary*)errorToast: (NSString *)theErrorText {
+
+    NSString *toastText = @"Missing ";
+    NSString *theError = theErrorText;
+
+    NSString *fullString = [toastText stringByAppendingString:theError];
 
     NSMutableDictionary *options = [@{
-                              kCRToastTextKey: @"Whoops! We're missing something",
+                              kCRToastTextKey: fullString,
                               //kCRToastSubtitleTextKey: @"We're gonna need a name",
                               kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue-LightItalic" size:17],
                               kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_help_outline size:36.0 color:[UIColor whiteColor]],
@@ -164,12 +169,14 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
                                                                                                                  }]];
     return [NSDictionary dictionaryWithDictionary:options];
 }
--(NSDictionary*)successToast {
+-(NSDictionary*)successToast: (NSString *)theBillName {
+
+    NSString *toastText = [theBillName stringByAppendingString:@" Bill Added"];
     
     NSMutableDictionary *options = [@{
-                                      kCRToastTextKey: @"Reminder Added",
+                                      kCRToastTextKey: toastText,
                                       kCRToastFontKey :[UIFont fontWithName:@"HelveticaNeue" size:12],
-                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:20.0 color:[UIColor whiteColor]],
+                                      kCRToastImageKey:[IonIcons imageWithIcon:ion_ios_checkmark_empty size:22.0 color:[UIColor whiteColor]],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastImageAlignmentKey: @(NSTextAlignmentCenter),
                                       kCRToastBackgroundColorKey : PURPLE_COLOR,
@@ -196,19 +203,13 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
     return [NSDictionary dictionaryWithDictionary:options];
 }
 
--(NSString *) getReinderName {
-    if ([self.nameTextField.text isEqualToString:@""]) {
+-(NSString *)getReminderName {
 
-        [CRToastManager showNotificationWithOptions:[self errorToast]
-                                     apperanceBlock:^(void) {
-                                         self.nameLabel.textColor = PURPLE_COLOR;
-                                     }
-                                    completionBlock:^(void) {
-                                        self.nameLabel.textColor = FlatWhite;
-                                    }];
-    }
+    NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
 
-    return self.nameTextField.text;
+    NSString *reminderName = self.nameTextField.text;
+    NSString *trimmedReminder = [reminderName stringByTrimmingCharactersInSet:whitespace];
+    return trimmedReminder;
 }
 
 -(NSDate *) getReminderDate {
@@ -229,15 +230,25 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
 -(BOOL) getAutoPayBOOL {
     return autoPayBOOL;
 }
+-(int) getTax {
+    return _taxSegmentControl.selectedSegmentIndex;
+}
+-(double)calculateTax: (double)theTaxRate {
+
+    NSString *priceStringToDouble = self.priceTextField.text;
+    double priceWithTax = ([priceStringToDouble doubleValue] * theTaxRate) + [priceStringToDouble doubleValue];
+
+    return priceWithTax;
+}
 
 - (IBAction)saveData:(id)sender {
     
     ReminderObject *reminder = [[ReminderObject alloc]init];
-    
+
     if ([self.nameTextField.text isEqual:@""]) {
-        
-        
-        [CRToastManager showNotificationWithOptions:[self errorToast]
+
+
+        [CRToastManager showNotificationWithOptions:[self errorToast:@"Bill Name"]
                                      apperanceBlock:^(void) {
                                          self.nameLabel.textColor = PURPLE_COLOR;
                                      }
@@ -245,26 +256,21 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
                                         self.nameLabel.textColor = FlatWhite;
                                     }];
     } else {
-        
-        NSString *priceStringToDouble = self.priceTextField.text;
-        
-        reminder.name = [self getReinderName];
+
+        reminder.name = [self getReminderName];
         //reminder.price = [priceStringToDouble doubleValue];
         reminder.dueDate = [self getReminderDate];
         reminder.monthlyCheck = [self getMonthlyBOOL];
         reminder.autoPay = [self getAutoPayBOOL];
-        
-        if (_taxSegemntControl.selectedSegmentIndex == 0) {
-            double taxRate = 0.09;
-            double priceWithTax = [priceStringToDouble doubleValue] * taxRate + [priceStringToDouble doubleValue];
-            
-            reminder.price = priceWithTax;
+
+        if ([self getTax] == 0) {
+            reminder.price = [self calculateTax:0.09];
         }
-        if (_taxSegemntControl.selectedSegmentIndex == 1) {
-            reminder.price = [priceStringToDouble doubleValue];
+        if ([self getTax] == 1) {
+            reminder.price = [self calculateTax:0.00];
         }
-        if (_taxSegemntControl.selectedSegmentIndex == 2) {
-            printf("NOTHING HANDLED HERE YET");
+        if ([self getTax] == 2) {
+            //TODO Handle the custom tax behavior.
         }
 //        NSLog(@"NAME: %@", self.nameTextField.text);
 //        NSLog(@"PRICE: %@", self.priceTextField.text);
@@ -272,12 +278,12 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
 //        NSLog(@"MONTHLY CHECK: %hhu", monthlyBOOL);
 //        NSLog(@"AUTO PAY CHECK: %hhu", autoPayBOOL);
 //        printf("\n");
-        
+
         [self addToRealm:reminder];
-        
-        
-        
-        [CRToastManager showNotificationWithOptions:[self successToast]
+
+
+
+        [CRToastManager showNotificationWithOptions:[self successToast:[self getReminderName]]
                                      apperanceBlock:^(void) {
                                          [self dismissViewControllerAnimated:YES completion:nil];
                                      }
@@ -334,7 +340,7 @@ static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
     }
 }
 - (IBAction)taxSegmentControl:(id)sender {
-    if (_taxSegemntControl.selectedSegmentIndex == 2) {
+    if (_taxSegmentControl.selectedSegmentIndex == 2) {
         _customTaxLabel.enabled = true;
         _customTaxTextField.enabled = true;
     } else {
